@@ -1,24 +1,42 @@
-# README
+# Memonto
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+簡単に日々を記録して、自分と向き合う時間をサポートするサービスです。
 
-Things you may want to cover:
+### サイトテーマ
+その瞬間に感動したこと、SNSに投稿するほどでもない小さなことなどの情報を
+自分だけのライフログとして簡単に記録することができるサービスです。  
+記録した出来事を振り返ることで、自分と向き合う時間を作ることができます。
 
-* Ruby version
+### テーマを選んだ理由
+日々の小さな出来事や心を動かされた時の感情などは、時間が過ぎるにつれ忘れることが多いです。
 
-* System dependencies
+そこで自身の活動や思考を見返す目的で日記帳を買って始めましたが、  
+「書くスペースが広すぎる」「書く内容が浮かばない」「書く時間がない」「飽きた」  
+そんな理由から長続きしませんでした。  
+記録のために日記を始めたものの、このような経験をした人は多いと思います。  
+そのような人たちが「簡単に長続きできる」「楽しく記録を振り返ることで自分と向き合う時間を作る」
+ことができたらという思いからこのサービスを制作しました。
 
-* Configuration
+### ターゲットユーザ
+- 日々の記録や活動の記録をつけたい人
+- ライフログに興味がある/やりたい人
+- 日記を続けることに挫折した人
 
-* Database creation
+### 主な利用シーン
+- 小さな出来事や挑戦していることを記録したいとき
+- 心を動かされた瞬間の思考や心情を記録したいとき
+- 記録した出来事を振り返りたいとき
 
-* Database initialization
+## 設計書
+製作中。
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 考案中。 
