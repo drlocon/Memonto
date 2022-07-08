@@ -1,6 +1,6 @@
 <h2>Log in</h2>
 
-<%= form_with model: @end_user, url: end_user_session_path do |f| %>
+<%= form_with model: @admin, url: admin_session_path do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

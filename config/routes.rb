@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
+  # devise関
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-
+  
   devise_for :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
+  # end_userサイド
   scope module: :public do
     root to: 'homes#top'
 
@@ -24,8 +26,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # adminサイド
   namespace :admin do
-    get "/" => "home#top"
+    get "/" => "homes#top"
 
     resource :end_users, only:[:show, :edit, :update] do
       collection do
