@@ -1,0 +1,2 @@
+class TagDocument < ApplicationRecord
+end
