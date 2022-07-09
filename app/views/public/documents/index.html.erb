@@ -1,5 +1,5 @@
 <h1>記録一覧</h1>
 <% @documents.each do |document| %>
-  <%= document.feeling %>
-  <%= document.content %>
+  <p>気持ち：<%= document.feeling %></p>
+  <p>記録内容：<%= document.content %></p>
 <% end %>

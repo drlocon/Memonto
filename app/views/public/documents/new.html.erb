@@ -6,7 +6,7 @@
   
   <!--感情ステータスを選択-->
   <h4>今の気持ち</h4>
-  <%= f.select :feeling, Document.feelings.keys, {include_blank: "選択してください"} %>
+  <%= f.select :feeling, Document.feelings_i18n.invert.keys, {include_blank: "選択してください"} %>
   
   <!--記録フォーム-->
   <h4>記録内容</h4>

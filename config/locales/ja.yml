@@ -1,13 +1,13 @@
 ja:
+  enums:
+    document:
+      feeling:
+        happy: 幸せ
+        anger: 怒り
+        sorrow: 悲しみ
+        normal: 普通
+        tired: 疲れ
   activerecord:
-    enums:
-      document:
-        feeling:
-          happy: 幸せ
-          anger: 怒り
-          sorrow: 悲しみ
-          normal: 普通
-          tired: 疲れ
     attributes:
       end_user:
         name: 名前
