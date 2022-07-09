@@ -1,2 +1,11 @@
-<h1>Public::Documents#edit</h1>
-<p>Find me in app/views/public/documents/edit.html.erb</p>
+<h1><%= @document.created_at %>の記録を編集</h1>
+<%= form_with model: @document, local: true do |f| %>
+  <h4>あの時の感情</h4>
+  <%= f.select :feeling, Document.feelings.keys.map { |k| [I18n.t("enums.document.feeling.#{k}"), k]} %><br>
+  <h4>記録の内容</h4>
+  <%= f.text_area :content %><br>
+  <%= f.submit '編集内容を保存', class: 'btn btn-success' %>
+<% end %>
+
+<%= link_to '詳細へ戻る', @document, class: "document_#{@document.id}" %> |
+<%= link_to '一覧へ戻る', documents_path, class: "back" %>

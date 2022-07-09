@@ -16,6 +16,9 @@ module Memonto
     
     # アプリケーションの日本語化
     config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
+    
+    # タイムゾーンを変更
+    config.time_zone = 'Tokyo'
 
     # Configuration for the application, engines, and railties goes here.
     #

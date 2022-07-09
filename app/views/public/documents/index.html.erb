@@ -2,7 +2,9 @@
 <% @documents.each do |document| %>
   <%= link_to document_path(document) do %>
     <div class="linkbox">
-      <%= document.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+      <%= l document.created_at, format: :mon %><br>
+      <%= l document.created_at, format: :daily %><br>
+      <%= l document.created_at, format: :times %><br>
       <%= document.content %>
     </div>
   <% end %>

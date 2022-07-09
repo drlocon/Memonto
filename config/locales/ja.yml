@@ -7,6 +7,10 @@ ja:
         sorrow: 悲しみ
         normal: 普通
         tired: 疲れ
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%Y"
   activerecord:
     attributes:
       end_user:
@@ -216,8 +220,12 @@ ja:
   time:
     am: 午前
     formats:
-      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      default: "%Y年%m月%d日(%a) %H時%M分%S秒"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      age: "%"
+      mon: "%m"
+      daily: "%d"
+      times: "%H:%M"
     pm: 午後
         

@@ -1,5 +1,6 @@
 class Public::DocumentsController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_document, only: [:show, :edit, :update]
   
   def new
     @document_new = Document.new
@@ -23,10 +24,19 @@ class Public::DocumentsController < ApplicationController
   end
 
   def show
-    @document = Document.find(params[:id])
   end
 
   def edit
+  end
+  
+  def update
+    if @document.update(document_params)
+      flash[:notice] = '編集内容の保存に成功しました'
+      redirect_to document_path(params[:id])
+    else
+      flash[:alert] = '入力に誤りがあります'
+      render :edit
+    end
   end
 
   def word_search
@@ -39,5 +49,9 @@ class Public::DocumentsController < ApplicationController
   
   def document_params
     params.require(:document).permit(:content, :feeling)
+  end
+  
+  def set_document
+    @document = Document.find(params[:id])
   end
 end
