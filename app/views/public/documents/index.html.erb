@@ -1,5 +1,7 @@
 <h1>記録一覧</h1>
 <% @documents.each do |document| %>
-  <p>気持ち：<%= document.feeling %></p>
-  <p>記録内容：<%= document.content %></p>
+  <p>
+    <%= document.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+    <%= document.content %>
+  </p>
 <% end %>

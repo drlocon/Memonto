@@ -19,7 +19,7 @@ class Public::DocumentsController < ApplicationController
   end
 
   def index
-    @documents = Document.all
+    @documents = Document.where(end_user_id: current_end_user.id).includes(:end_user).order("created_at DESC")
   end
 
   def show
