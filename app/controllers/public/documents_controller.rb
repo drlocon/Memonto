@@ -6,8 +6,9 @@ class Public::DocumentsController < ApplicationController
   end
   
   def create
-    document = Document.new(document_params)
-    if document.save
+    @document = Document.new(document_params)
+    @document.end_user_id = current_end_user.id
+    if @document.save
       flash[:notice] = '記録を登録しました'
       redirect_to documents_path
     else
@@ -18,6 +19,7 @@ class Public::DocumentsController < ApplicationController
   end
 
   def index
+    @documents = Document.all
   end
 
   def show
@@ -35,6 +37,6 @@ class Public::DocumentsController < ApplicationController
   private
   
   def document_params
-    params.require(:document).permit(:content, :feeling, :name)
+    params.require(:document).permit(:content, :feeling)
   end
 end

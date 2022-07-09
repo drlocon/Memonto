@@ -10,8 +10,10 @@
 #  end_user_id :integer          not null
 #
 class Document < ApplicationRecord
-  belongs_to :end_users
+  belongs_to :end_user
 
   has_many :tag_documents, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  enum feeling: { happy: 0, anger: 1, sorrow: 2, normal: 3, tired: 4 }
 end
