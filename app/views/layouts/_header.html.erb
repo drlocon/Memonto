@@ -3,6 +3,9 @@
     <ul class="navbar-nav ml-auto">
       <% if end_user_signed_in? %>
         <li class="nav-item">
+          <%= link_to "記録をつける", new_document_path, class: 'btn btn-primary' %>
+        </li>
+        <li class="nav-item">
           <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'btn btn-primary' %>
         </li>
       <% elsif admin_signed_in? %>

@@ -1,2 +1,15 @@
-<h1>Public::Documents#new</h1>
-<p>Find me in app/views/public/documents/new.html.erb</p>
+<h1>記録する</h1>
+<p>今の気持ちと言葉を記録しましょう。</p>
+
+<%= form_with model: @document do |f| %>
+  <h4>タグをつける</h4>
+  <p>※複数のタグをつける場合は「,」をつけてください。</p>
+  <p>例) 健康,感動,趣味</p>
+  <!--ここにタグ機能を実装する-->
+  
+  <h4>記録内容</h4>
+  <%= f.text_area :content %>
+  
+  <%= f.submit '記録をつける' %>
+  
+<% end %>
