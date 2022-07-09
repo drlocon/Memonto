@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :end_user_state, only: [:create]
-  
+
   protected
   
   # ログイン後のパスを変更
@@ -31,8 +30,6 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-
-  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
