@@ -14,6 +14,7 @@ class Document < ApplicationRecord
 
   has_many :tag_documents, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
+  # feelingのenum設定
   enum feeling: { happy: 0, anger: 1, sorrow: 2, normal: 3, tired: 4 }
 end

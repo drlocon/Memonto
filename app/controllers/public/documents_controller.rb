@@ -1,6 +1,6 @@
 class Public::DocumentsController < ApplicationController
   before_action :authenticate_end_user!
-  before_action :set_document, only: [:show, :edit, :update]
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
   
   def new
     @document_new = Document.new
@@ -31,12 +31,18 @@ class Public::DocumentsController < ApplicationController
   
   def update
     if @document.update(document_params)
-      flash[:notice] = '編集内容の保存に成功しました'
+      flash[:notice] = '編集内容を保存しました'
       redirect_to document_path(params[:id])
     else
       flash[:alert] = '入力に誤りがあります'
       render :edit
     end
+  end
+  
+  def destroy
+    @document.destroy
+    flash[:notice] = '削除しました'
+    redirect_to documents_path
   end
 
   def word_search

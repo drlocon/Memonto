@@ -3,3 +3,5 @@
 <%= @document.content %><br>
 
 <%= link_to '編集', edit_document_path(@document), class: "btn btn-success" %>
+<%= link_to '削除', @document, method: :delete, data: { confirm: '本当に消しますか？' },
+    class: "btn btn-sm btn-danger destroy_document_#{@document.id}" %>
