@@ -17,4 +17,7 @@ class Document < ApplicationRecord
 
   # feelingのenum設定
   enum feeling: { happy: 0, anger: 1, sorrow: 2, normal: 3, tired: 4 }
+  
+  # バリデーションの設定
+  validates :content, presence: true
 end

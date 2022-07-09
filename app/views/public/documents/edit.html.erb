@@ -1,4 +1,4 @@
-<h1><%= @document.created_at %>の記録を編集</h1>
+<h1><%= l @document.created_at, format: :long %>の記録を編集</h1>
 <%= form_with model: @document, local: true do |f| %>
   <h4>あの時の感情</h4>
   <%= f.select :feeling, Document.feelings.keys.map { |k| [I18n.t("enums.document.feeling.#{k}"), k]} %><br>

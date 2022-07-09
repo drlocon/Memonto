@@ -1,4 +1,4 @@
-<h1><%= @document.created_at %>の記録</h1>
+<h1><%= l @document.created_at, format: :long %>の記録</h1>
 <%= @document.feeling_i18n %><br>
 <%= @document.content %><br>
 
