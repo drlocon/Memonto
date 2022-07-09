@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # devise関
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -7,15 +8,16 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
+  # end_userサイド
   scope module: :public do
     root to: 'homes#top'
-    
+
     resource :end_users, only:[:show, :edit, :update] do
       get "confirm" => "end_users#confirm"
       patch "withdrawal" => "end_users#withdrawal"
     end
-    
+
     resources :documents do
       collection do
         get "word_search" => "documents#word_search"
@@ -23,16 +25,17 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
+  # adminサイド
   namespace :admin do
-    get "/" => "home#top"
-    
+    get "/" => "homes#top"
+
     resource :end_users, only:[:show, :edit, :update] do
       collection do
         get "word_search" => "end_users#word_search"
       end
     end
   end
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
