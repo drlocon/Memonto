@@ -1,2 +1,5 @@
-<h1>Public::Documents#show</h1>
-<p>Find me in app/views/public/documents/show.html.erb</p>
+<h1><%= @document.created_at.strftime('%Y/%m/%d %H:%M') %>の記録</h1>
+<div class="linkbox">
+  <%= @document.feeling_i18n %><br>
+  <%= @document.content %>
+</div>

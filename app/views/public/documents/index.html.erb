@@ -1,7 +1,9 @@
 <h1>記録一覧</h1>
 <% @documents.each do |document| %>
-  <p>
-    <%= document.created_at.strftime('%Y/%m/%d %H:%M') %><br>
-    <%= document.content %>
-  </p>
+  <%= link_to document_path(document) do %>
+    <div class="linkbox">
+      <%= document.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+      <%= document.content %>
+    </div>
+  <% end %>
 <% end %>
