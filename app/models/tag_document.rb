@@ -9,6 +9,9 @@
 #  tag_id      :integer          not null
 #
 class TagDocument < ApplicationRecord
-  belongs_to :documents
-  belongs_to :tags
+  belongs_to :document
+  belongs_to :tag
+  
+  validates :document_id, presence: true
+  validates :tag_id, presence: true
 end

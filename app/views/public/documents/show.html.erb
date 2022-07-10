@@ -1,2 +1,15 @@
-<h1>Public::Documents#show</h1>
-<p>Find me in app/views/public/documents/show.html.erb</p>
+<h1><%= l @document.created_at, format: :long %>の記録</h1>
+<p>感情</p>
+<%= @document.feeling_i18n %><br>
+
+<p>タグ</p>
+<% @document.tags.each do |tag| %>
+  <%= tag.name %>
+<% end %><br>
+
+<p>内容</p>
+<%= @document.content %><br>
+
+<%= link_to '編集', edit_document_path(@document), class: "btn btn-success" %>
+<%= link_to '削除', @document, method: :delete, data: { confirm: '本当に消しますか？' },
+    class: "btn btn-sm btn-danger destroy_document_#{@document.id}" %>
