@@ -29,10 +29,13 @@ class Public::DocumentsController < ApplicationController
   end
 
   def edit
+    @tag_list = @document.tags.pluck(:name).join(',')
   end
   
   def update
+    tag_list = params[:document][:tag_name].split(',')
     if @document.update(document_params)
+      @document.save_tags(tag_list)
       flash[:notice] = '編集内容を保存しました'
       redirect_to document_path(params[:id])
     else
