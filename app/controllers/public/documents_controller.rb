@@ -64,8 +64,5 @@ class Public::DocumentsController < ApplicationController
 
   def set_document
     @document = Document.find(params[:id])
-    unless @document.end_user == current_end_user
-      redirect_to root_path
-    end
   end
 end

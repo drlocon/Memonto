@@ -1,24 +1,19 @@
 Rails.application.routes.draw do
-  # devise関連
+  # devise/adminサイド
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  
-  devise_for :end_users, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
 
-  # end_userサイド
+  # publicサイド
   scope module: :public do
     root to: 'homes#top'
 
-    resource :end_users, only: [:show, :edit, :update] do
+    resources :end_users, only: [:show, :edit, :update] do
       get "confirm" => "end_users#confirm"
       patch "withdrawal" => "end_users#withdrawal"
     end
 
-    resources :documents, only: [:new, :cretate, :index, :show, :edit, :update, :destroy] do
+    resources :documents do
       resource :favorites, only: [:create, :destroy]
       collection do
         get "word_search" => "documents#word_search"
@@ -26,12 +21,18 @@ Rails.application.routes.draw do
       end
     end
   end
+  
+  # devise/publicサイド
+  devise_for :end_users, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
   # adminサイド
   namespace :admin do
     get "/" => "homes#top"
 
-    resource :end_users, only:[:show, :edit, :update] do
+    resources :end_users, only:[:show, :edit, :update] do
       collection do
         get "word_search" => "end_users#word_search"
       end

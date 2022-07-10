@@ -1,2 +1,9 @@
-<h1>Public::EndUsers#show</h1>
-<p>Find me in app/views/public/end_users/show.html.erb</p>
+<h1>ユーザーのマイページ</h1>
+<p>画像</p>
+<%= image_tag @end_user.get_profile_image(100,100) %>
+<p>ユーザー名</p>
+<%= @end_user.name %>
+<p>投稿数</p>
+<p>お気に入り数</p>
+
+<%= link_to "編集", edit_end_user_path(@end_user), class: 'btn btn-primary' %>
