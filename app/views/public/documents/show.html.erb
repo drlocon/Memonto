@@ -1,4 +1,9 @@
 <h1><%= l @document.created_at, format: :long %>の記録</h1>
+<!--お気に入り-->
+<div class=<%= "favorite-" + @document.id.to_s %> >
+  <%= render 'public/favorites/btn', document: @document %>
+</div>
+
 <p>感情</p>
 <%= @document.feeling_i18n %><br>
 

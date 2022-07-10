@@ -1,4 +1,7 @@
 <h1><%= l @document.created_at, format: :long %>の記録を編集</h1>
+<div class=<%= "favorite-" + @document.id.to_s %> >
+  <%= render 'public/favorites/btn', document: @document %>
+</div>
 <%= form_with model: @document do |f| %>
   <!--タグ投稿フォーム-->
   <h4>タグをつける</h4>
