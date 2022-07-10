@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # devise関
+  # devise関連
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -13,12 +13,13 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
 
-    resource :end_users, only:[:show, :edit, :update] do
+    resource :end_users, only: [:show, :edit, :update] do
       get "confirm" => "end_users#confirm"
       patch "withdrawal" => "end_users#withdrawal"
     end
 
-    resources :documents do
+    resources :documents, only: [:new, :cretate, :index, :show, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
       collection do
         get "word_search" => "documents#word_search"
         get "tag_search" => "documents#tag_search"

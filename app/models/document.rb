@@ -39,4 +39,9 @@ class Document < ApplicationRecord
       self.tags << document_tag
     end
   end
+  
+  # お気に入り機能の設定
+  def favorited_by?(end_user)
+    favorites.where(end_user_id: end_user.id).exists?
+  end
 end
