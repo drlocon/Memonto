@@ -1,5 +1,8 @@
 <h1><%= l @document.created_at, format: :long %>の記録</h1>
 <%= @document.feeling_i18n %><br>
+<% @document.tags.each do |tag| %>
+  <%= tag.name %><br>
+<% end %><br>
 <%= @document.content %><br>
 
 <%= link_to '編集', edit_document_path(@document), class: "btn btn-success" %>

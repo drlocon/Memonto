@@ -13,6 +13,7 @@ class Document < ApplicationRecord
   belongs_to :end_user
 
   has_many :tag_documents, dependent: :destroy
+  has_many :tags, through: :tag_documents
   has_many :favorites, dependent: :destroy
 
   # feelingのenum設定
@@ -20,4 +21,20 @@ class Document < ApplicationRecord
   
   # バリデーションの設定
   validates :content, presence: true
+  
+  # タグ機能の設定
+  def save_tags(savedocument_tags)
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    old_tags = current_tags - savedocument_tags
+    new_tags = savedocument_tags - current_tags
+      
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(name:old_name)
+    end
+      
+    new_tags.each do |new_name|
+      document_tag = Tag.find_or_create_by(name:new_name)
+      self.tags << document_tag
+    end
+  end
 end

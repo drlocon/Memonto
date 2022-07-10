@@ -5,6 +5,12 @@
       <%= l document.created_at, format: :mon %><br>
       <%= l document.created_at, format: :daily %><br>
       <%= l document.created_at, format: :times %><br>
+
+      <!--タグ-->
+      <% document.tags.each do |tag| %>
+        <%= tag.name %><br>
+      <% end %>
+      <!--記録内容-->
       <%= document.content %>
     </div>
   <% end %>

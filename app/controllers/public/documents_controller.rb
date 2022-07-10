@@ -9,7 +9,9 @@ class Public::DocumentsController < ApplicationController
   def create
     @document_new = Document.new(document_params)
     @document_new.end_user_id = current_end_user.id
+    tag_list = params[:document][:tag_name].split(',')
     if @document_new.save
+      @document_new.save_tags(tag_list)
       flash[:notice] = '記録を登録しました'
       redirect_to documents_path
     else

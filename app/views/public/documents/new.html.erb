@@ -2,13 +2,15 @@
 <p>今の気持ちと言葉を記録しましょう。</p>
 
 <%= form_with model: @document_new do |f| %>
-  <!--タグ機能-->
+  <!--タグ投稿フォーム-->
+  <h4>タグをつける</h4>
+  　<%= f.text_field :tag_name %>
   
   <!--感情ステータスを選択-->
   <h4>今の気持ち</h4>
   <%= f.select :feeling, Document.feelings.keys.map { |k| [I18n.t("enums.document.feeling.#{k}"), k]} %>
   
-  <!--記録フォーム-->
+  <!--記録投稿フォーム-->
   <h4>記録内容</h4>
   <%= f.text_area :content %><br>
   
