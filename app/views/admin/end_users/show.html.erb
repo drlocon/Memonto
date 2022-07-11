@@ -1,2 +1,13 @@
-<h1>Admin::EndUsers#show</h1>
-<p>Find me in app/views/admin/end_users/show.html.erb</p>
+<h1>ユーザー詳細画面</h1>
+<p>ユーザーID</p>
+<%= @end_user.id %>
+<p>ユーザー名</p>
+<%= @end_user.name %>
+<p>メールアドレス</p>
+<%= @end_user.email %>
+<p>ステータス</p>
+<% if @end_user.is_deleted %>
+  退会
+<% else %>
+  有効
+<% end %>
