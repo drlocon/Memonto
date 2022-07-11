@@ -6,4 +6,6 @@
 <p>投稿数</p>
 <p>お気に入り数</p>
 
-<%= link_to "編集", edit_end_user_path(@end_user), class: 'btn btn-primary' %>
+<% if @end_user.name != "guestuser" %>
+  <%= link_to "編集", edit_end_user_path(@end_user), class: "btn btn-primary edit_user_#{@end_user.id}" %>
+<% end %>

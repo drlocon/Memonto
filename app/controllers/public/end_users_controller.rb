@@ -1,6 +1,7 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_end_user, only: [:show, :edit, :update]
+  before_action :ensure_guest_user, only: [:edit]
 
   def show
   end
@@ -29,5 +30,13 @@ class Public::EndUsersController < ApplicationController
 
   def set_end_user
     @end_user = EndUser.find(params[:id])
+  end
+  
+  def ensure_guest_user
+    @end_user = EndUser.find(params[:id])
+    if @end_user.name == "guestuser"
+      flash[:alert] = 'ゲストユーザーはプロフィール編集機能が使えません'
+      redirect_to end_user_path(current_end_user)
+    end
   end
 end
