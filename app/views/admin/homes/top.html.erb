@@ -1,2 +1,15 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h1>ユーザーの一覧</h1>
+<% @end_users.each do |end_user| %>
+  <p>ID</p>
+  <%= end_user.id %>
+  <p>ユーザー名</p>
+  <%= end_user.name %>
+  <p>メールアドレス</p>
+  <%= end_user.email %>
+  <p>ステータス</p>
+  <% if end_user.is_deleted %>
+    <p>退会</p>
+  <% else %>
+    <p>有効</p>
+  <% end %>
+<% end %>
