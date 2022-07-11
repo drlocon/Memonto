@@ -1,1 +1,10 @@
-<h1>Public::EndUsers#confirm</h1>
+<h1>退会確認画面</h1>
+<p>
+  退会手続きをされますと、これまでの記録履歴がなど一部のサービスが利用できなくなります。<br>
+  再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
+  本当に退会してよろしいですか？
+</p>
+
+<%= link_to "退会する", end_user_withdrawal_path, method: :patch, 
+    data: { confilm: "本当に退会しますか？" }, class: 'btn btn-danger' %>
+<%= link_to "退会しない", end_user_path(current_end_user), class: 'btn btn-primary' %>

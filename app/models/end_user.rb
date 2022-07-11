@@ -46,4 +46,9 @@ class EndUser < ApplicationRecord
       user.name = "guestuser"
     end
   end
+  
+  # 退会機能の設定
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end

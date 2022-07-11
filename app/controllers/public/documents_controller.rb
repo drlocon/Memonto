@@ -12,11 +12,11 @@ class Public::DocumentsController < ApplicationController
     tag_list = params[:document][:tag_name].split(',')
     if @document_new.save
       @document_new.save_tags(tag_list)
-      flash[:notice] = '記録を登録しました'
+      flash[:notice] = "記録を登録しました"
       redirect_to documents_path
     else
       @document_new = Document.new
-      flash[:alert] = '入力に誤りがあります'
+      flash[:alert] = "入力に誤りがあります"
       render :new
     end
   end
@@ -36,17 +36,17 @@ class Public::DocumentsController < ApplicationController
     tag_list = params[:document][:tag_name].split(',')
     if @document.update(document_params)
       @document.save_tags(tag_list)
-      flash[:notice] = '編集内容を保存しました'
+      flash[:notice] = "編集内容を保存しました"
       redirect_to document_path(params[:id])
     else
-      flash[:alert] = '入力に誤りがあります'
+      flash[:alert] = "入力に誤りがあります"
       render :edit
     end
   end
 
   def destroy
     @document.destroy
-    flash[:notice] = '削除しました'
+    flash[:notice] = "削除しました"
     redirect_to documents_path
   end
 

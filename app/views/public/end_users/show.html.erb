@@ -8,4 +8,5 @@
 
 <% if @end_user.name != "guestuser" %>
   <%= link_to "編集", edit_end_user_path(@end_user), class: "btn btn-primary edit_user_#{@end_user.id}" %>
+  <%= link_to "退会", end_user_confirm_path(@end_user), class: "btn btn-danger edit_user_#{@end_user.id}" %>
 <% end %>
