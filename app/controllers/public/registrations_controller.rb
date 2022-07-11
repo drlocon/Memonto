@@ -7,7 +7,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   
   # 新規登録後のパスを変更
   def after_sign_up_path_for(resource)
-    end_users_path
+    root_path
   end
   
   # 新規登録の保存関連

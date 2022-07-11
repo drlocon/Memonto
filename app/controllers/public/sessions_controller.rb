@@ -1,19 +1,36 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  # ゲストログイン機能
+  def guest_sign_in
+    user = EndUser.guest
+    sign_in user
+    flash[:notice] = "ゲストユーザーでログインしました"
+    redirect_to root_path
+  end
 
   protected
-  
+
   # ログイン後のパスを変更
   def after_sign_in_path_for(resource)
-    end_users_path
+    root_path
   end
-  
+
   # ログアウト後のパスを変更
   def after_sign_out_path_for(resource)
     root_path
   end
   
+  # 退会機能
+  def end_user_state
+    @end_user = EndUser.find_by(email: params[:end_user][:email])
+    return if !@customer
+    if @customer.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false)
+      flash[:alert] = "退会済みですので再度ご登録してご利用ください"
+      redirect_to new_end_user_registration_path
+    end
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

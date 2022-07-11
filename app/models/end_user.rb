@@ -26,4 +26,29 @@ class EndUser < ApplicationRecord
   
   has_many :documents, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  # プロフィール画像の設定
+  has_one_attached :profile_image
+  
+  # プロフィール画像(デフォルト)の設定
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/pro.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  # ゲストログインの設定
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+  
+  # 退会機能の設定
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end
