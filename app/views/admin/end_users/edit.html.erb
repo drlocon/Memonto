@@ -1,2 +1,16 @@
-<h1>Admin::EndUsers#edit</h1>
-<p>Find me in app/views/admin/end_users/edit.html.erb</p>
+<h1><%= @end_user.name %>さんの登録情報</h1>
+<%= form_with model: @end_user do |f| %>
+  <p>ユーザーID</p>
+  <%= @end_user.id %>
+  <p>ユーザー名</p>
+  <%= f.text_field :name %>
+  <p>メールアドレス</p>
+  <%= f.text_field :email %>
+  <p>ステータス</p>
+  <%= f.radio_button :is_deleted, "true" %> 退会
+  <%= f.radio_button :is_deleted, "false" %> 有効
+  <br>
+  <%= f.submit "変更を保存", class: "btn btn-success" %>
+<% end %>
+<br>
+<%=link_to "ユーザー詳細画面に戻る", admin_end_user_path(@end_user), class: "btn btn-primary" %>
