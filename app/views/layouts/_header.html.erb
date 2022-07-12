@@ -16,6 +16,9 @@
         </li>
       <% elsif admin_signed_in? %>
         <li class="nav-item">
+          <%= link_to "ユーザ一覧", admin_path, class: 'btn btn-primary' %>
+        </li>
+        <li class="nav-item">
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-primary' %>
         </li>
       <% else %>
