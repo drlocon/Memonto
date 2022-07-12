@@ -51,4 +51,13 @@ class EndUser < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+  
+  # キーワード検索の設定
+  def self.word_search(search)
+    if search != ""
+      EndUser.where('name LIKE(?)', "%#{search}%")
+    else
+      EndUser.all
+    end
+  end
 end

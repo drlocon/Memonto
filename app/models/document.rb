@@ -44,4 +44,13 @@ class Document < ApplicationRecord
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?
   end
+  
+  # キーワード検索の設定
+  def self.word_search(search)
+    if search != ""
+      Document.where('content LIKE(?)', "%#{search}%")
+    else
+      Document.all
+    end
+  end
 end

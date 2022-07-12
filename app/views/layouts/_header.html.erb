@@ -14,12 +14,24 @@
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'btn btn-primary' %>
         </li>
+        <li>
+          <%= form_with url: word_search_documents_path, local: true, method: :get do |f| %>
+            <%= f.text_field :keyword, placeholder: "Search", class: "" %>
+            <% f.submit %>
+          <% end %>
+        </li>
       <% elsif admin_signed_in? %>
         <li class="nav-item">
           <%= link_to "ユーザ一覧", admin_path, class: 'btn btn-primary' %>
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-primary' %>
+        </li>
+        <li>
+          <%= form_with url: word_search_admin_end_users_path, local: true, method: :get do |f| %>
+            <%= f.text_field :keyword, placeholder: "Search", class: "" %>
+            <% f.submit %>
+          <% end %>
         </li>
       <% else %>
         <li class="nav-item">

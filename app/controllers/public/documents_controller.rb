@@ -51,6 +51,7 @@ class Public::DocumentsController < ApplicationController
   end
 
   def word_search
+    @documents_search = Document.word_search(params[:keyword])
   end
 
   def tag_search
