@@ -1,7 +1,8 @@
 <h1>キーワード検索結果</h1>
-<p>検索結果は<%= @documents_search.count %>件です</p>
+<p>検索結果は<%= @words_search.count %>件です</p>
 
-<% @documents_search.each do |document| %>
+<% @words_search.each do |document| %>
+  <%= image_tag document.end_user.get_profile_image(100,100) %>
   <%= link_to document_path(document) do %>
     <div class="linkbox">
       <%= l document.created_at, format: :mon %><br>
