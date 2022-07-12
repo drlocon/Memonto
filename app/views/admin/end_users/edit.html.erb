@@ -1,5 +1,5 @@
 <h1><%= @end_user.name %>さんの登録情報</h1>
-<%= form_with model: @end_user do |f| %>
+<%= form_with model: @end_user, url: admin_end_user_path do |f| %>
   <p>ユーザーID</p>
   <%= @end_user.id %>
   <p>ユーザー名</p>
