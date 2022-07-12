@@ -1,9 +1,11 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_end_user
-  before_action :ensure_guest_user, only: [:edit, :update, :confirm, :withdrawal]
+  before_action :ensure_guest_user, only: [:edit, :update, :confirm, :withdrawal, :favorites]
 
   def show
+    @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
+    @favorite_list = Document.find(@favorites)
   end
 
   def edit
