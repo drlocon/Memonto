@@ -2,7 +2,7 @@
 <p>
   タグリスト
   <% @tags.each do |list| %>
-    <%=link_to list.name, tag_search_documents_path(tag_id: list.id) %>
+      <%=link_to list.name, tag_search_documents_path(tag_id: list.id) %>
   <% end %>
 </p>
 

@@ -52,12 +52,12 @@ class Public::DocumentsController < ApplicationController
   end
 
   def word_search
-    @words_search = current_end_user.documents.word_search(params[:keyword])
+    @words_search = current_end_user.documents.includes(:end_user).word_search(params[:keyword])
   end
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @tags_search = @tag.documents
+    @tags_search = @tag.documents.includes(:end_user)
   end
 
   private
