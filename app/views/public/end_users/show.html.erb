@@ -34,50 +34,14 @@
   <%= link_to "退会", end_user_confirm_path(@end_user), class: "btn btn-danger edit_user_#{@end_user.id}" %>
 <% end %>
 
-<h1>今までの投稿を分析</h1>
+<h1>今月の投稿数</h1>
+<%= current_end_user.documents.where('created_at > ?', Date.today.month).count %>
 
-<canvas id="myLineChart"></canvas>
-  <script>
-    $(document).on('turbolinks:load', function() {
-      var ctx = document.getElementById("myLineChart");
-      var myLineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
-          datasets: [
-            {
-              label: '投稿した記録数',
-              data: [
-                <%= @documents.created_6day_ago.count %>,
-                <%= @documents.created_5day_ago.count %>, 
-                <%= @documents.created_4day_ago.count %>, 
-                <%= @documents.created_3day_ago.count %>, 
-                <%= @documents.created_2day_ago.count %>, 
-                <%= @documents.created_yesterday.count %>, 
-                <%= @documents.created_today.count %>
-              ],
-              borderColor: "rgba(0,0,255,1)",
-              backgroundColor: "rgba(0,0,0,0)",
-              tension: 0.4
-            }
-          ],
-        },
-        options: {
-          title: {
-            display: true,
-            text: '7日間の投稿数の比較'
-          },
-          responsive: true,
-          scales: {
-            y:{
-              suggestedMin: 0,
-              suggestedMax: 10
-            },
-            x:{
-              stacked: true
-            },
-          },
-        }
-      });
-    });
-  </script>
+<h1>今までの投稿数</h1>
+<%= current_end_user.documents.all.count %>
+
+<h1>七日間の投稿数</h1>
+<%= render 'public/end_users/line_chart', documents: @documents %>
+
+<h1>1ヶ月の感情分析</h1>
+<%= render 'public/end_users/doughnut_chart', documents: @documents %>

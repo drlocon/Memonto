@@ -21,7 +21,7 @@ class Document < ApplicationRecord
 
   # バリデーションの設定
   validates :content, presence: true
-  
+
   # 分析機能の設定
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日
   scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) } # 前日
@@ -30,6 +30,12 @@ class Document < ApplicationRecord
   scope :created_4day_ago, -> { where(created_at: 4.day.ago.all_day) } # 4日前
   scope :created_5day_ago, -> { where(created_at: 5.day.ago.all_day) } # 5日前
   scope :created_6day_ago, -> { where(created_at: 6.day.ago.all_day) } # 6日前
+
+  scope :current_happy, -> { where(feeling: 0, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) } # 今月
+  scope :current_angry, -> { where(feeling:1, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) } # 今月
+  scope :current_sorrow, -> { where(feeling:2, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) } # 今月
+  scope :current_normal, -> { where(feeling:3, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) } # 今月
+  scope :current_tired, -> { where(feeling:4, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) } # 今月
 
   # タグ機能の設定
   def save_tags(savedocument_tags)

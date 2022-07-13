@@ -1,0 +1,45 @@
+<canvas id="myDoughnutChart" width="400" height="200"></canvas>
+<script>
+  var ctx = document.getElementById('myDoughnutChart').getContext('2d');
+  var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['幸せ', '怒り', '悲しみ', '普通', '疲れ'],
+      datasets: [{
+        label: 'データの数',
+        data: [
+          <%= @documents.current_happy.count %>,
+          <%= @documents.current_angry.count %>, 
+          <%= @documents.current_sorrow.count %>, 
+          <%= @documents.current_normal.count %>, 
+          <%= @documents.current_tired.count %>, 
+          ],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 102, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      title: {
+        fontSize: 16,
+        display: true,
+        position: 'top',
+        text: 'ドーナツ'
+      },
+    }
+  });
+</script>
