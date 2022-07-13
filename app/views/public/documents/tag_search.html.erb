@@ -1,2 +1,24 @@
-<h1>Public::Documents#tag_search</h1>
-<p>Find me in app/views/public/documents/tag_search.html.erb</p>
+<h1>タグ検索結果</h1>
+<% @tags_search.each do |document| %>
+  <%= image_tag document.end_user.get_profile_image(100,100) %>
+  <%= link_to document_path(document) do %>
+    <div class="linkbox">
+      <%= l document.created_at, format: :mon %>
+      <%= l document.created_at, format: :daily %>
+      <%= l document.created_at, format: :times %><br>
+
+      <!--タグ-->
+      <p>
+        <% document.tags.each do |tag| %>
+          ,<%= tag.name %>
+        <% end %>
+      </p>
+      <!--お気に入り-->
+      <div class=<%= "favorite-" + document.id.to_s %> >
+        <%= render 'public/favorites/btn', document: document %>
+      </div>
+      <!--記録内容-->
+      <%= document.content %>
+    </div>
+  <% end %>
+<% end %>

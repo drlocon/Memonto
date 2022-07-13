@@ -19,6 +19,7 @@ class Admin::EndUsersController < ApplicationController
   end
 
   def word_search
+    @end_users_search = EndUser.word_search(params[:keyword])
   end
   
   private

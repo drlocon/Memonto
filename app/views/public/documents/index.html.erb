@@ -1,21 +1,32 @@
 <h1>記録一覧</h1>
+<p>
+  タグリスト
+  <% @tags.each do |list| %>
+    <%=link_to list.name, tag_search_documents_path(tag_id: list.id) %>
+  <% end %>
+</p>
+
 <% @documents.each do |document| %>
   <%= link_to document_path(document) do %>
-    <div class="linkbox">
-      <%= l document.created_at, format: :mon %><br>
-      <%= l document.created_at, format: :daily %><br>
+   <%= image_tag document.end_user.get_profile_image(100,100) %>
+    <div class="box">
+      <%= l document.created_at, format: :mon %>
+      <%= l document.created_at, format: :daily %>
       <%= l document.created_at, format: :times %><br>
 
       <!--タグ-->
-      <% document.tags.each do |tag| %>
-        <%= tag.name %><br>
-      <% end %>
+      <p>
+        タグ：
+        <% document.tags.each do |tag| %>
+          ,<%= tag.name %>
+        <% end %>
+      </p>
       <!--お気に入り-->
       <div class=<%= "favorite-" + document.id.to_s %> >
         <%= render 'public/favorites/btn', document: document %>
       </div>
       <!--記録内容-->
-      <%= document.content %>
+      <p>内容：<%= document.content %></p>
     </div>
   <% end %>
 <% end %>

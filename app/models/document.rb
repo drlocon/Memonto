@@ -18,10 +18,10 @@ class Document < ApplicationRecord
 
   # feelingのenum設定
   enum feeling: { happy: 0, anger: 1, sorrow: 2, normal: 3, tired: 4 }
-  
+
   # バリデーションの設定
   validates :content, presence: true
-  
+
   # タグ機能の設定
   def save_tags(savedocument_tags)
     # 現在存在するタグの取得
@@ -39,9 +39,23 @@ class Document < ApplicationRecord
       self.tags << document_tag
     end
   end
-  
+
   # お気に入り機能の設定
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?
+  end
+
+  # キーワード検索の設定
+  def self.word_search(search)
+    if search != ""
+      Document.where('content LIKE(?)', "%#{search}%")
+    else
+      Document.all
+    end
+  end
+
+  # タグ検索の設定
+  def self.tag_search(search_tag)
+    Document.where(tag_id: search_tag)
   end
 end

@@ -1,2 +1,19 @@
-<h1>Admin::EndUsers#word_search</h1>
-<p>Find me in app/views/admin/end_users/word_search.html.erb</p>
+<h1>キーワード検索結果</h1>
+<p>検索結果は<%= @end_users_search.count %>件です</p>
+
+<% @end_users_search.each do |end_user| %>
+  <%= link_to admin_end_user_path(end_user) do %>
+    <p>ID</p>
+    <%= end_user.id %>
+    <p>ユーザー名</p>
+    <%= end_user.name %>
+    <p>メールアドレス</p>
+    <%= end_user.email %>
+    <p>ステータス</p>
+    <% if end_user.is_deleted %>
+      <p>退会</p>
+    <% else %>
+      <p>有効</p>
+    <% end %>
+  <% end %>
+<% end %>

@@ -22,7 +22,8 @@ class Public::DocumentsController < ApplicationController
   end
 
   def index
-    @documents = Document.where(end_user_id: current_end_user.id).includes(:end_user).order("created_at DESC")
+    @tags = Tag.all
+    @documents = current_end_user.documents.includes(:end_user).all.order("created_at DESC")
   end
 
   def show
@@ -51,9 +52,12 @@ class Public::DocumentsController < ApplicationController
   end
 
   def word_search
+    @words_search = current_end_user.documents.word_search(params[:keyword])
   end
 
   def tag_search
+    @tag = Tag.find(params[:tag_id])
+    @tags_search = @tag.documents
   end
 
   private
@@ -63,6 +67,6 @@ class Public::DocumentsController < ApplicationController
   end
 
   def set_document
-    @document = Document.find(params[:id])
+    @document = current_end_user.documents.find(params[:id])
   end
 end

@@ -1,2 +1,24 @@
-<h1>Public::Documents#word_search</h1>
-<p>Find me in app/views/public/documents/word_search.html.erb</p>
+<h1>キーワード検索結果</h1>
+<p>検索結果は<%= @words_search.count %>件です</p>
+
+<% @words_search.each do |document| %>
+  <%= image_tag document.end_user.get_profile_image(100,100) %>
+  <%= link_to document_path(document) do %>
+    <div class="linkbox">
+      <%= l document.created_at, format: :mon %><br>
+      <%= l document.created_at, format: :daily %><br>
+      <%= l document.created_at, format: :times %><br>
+
+      <!--タグ-->
+      <% document.tags.each do |tag| %>
+        <%= tag.name %><br>
+      <% end %>
+      <!--お気に入り-->
+      <div class=<%= "favorite-" + document.id.to_s %> >
+        <%= render 'public/favorites/btn', document: document %>
+      </div>
+      <!--記録内容-->
+      <%= document.content %>
+    </div>
+  <% end %>
+<% end %>
