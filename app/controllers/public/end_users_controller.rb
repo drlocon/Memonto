@@ -6,6 +6,11 @@ class Public::EndUsersController < ApplicationController
   def show
     @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
     @favorite_list = Document.find(@favorites)
+    @documents = @end_user.documents
+    @today_book =  @documents.created_today
+    @yesterday_book = @documents.created_yesterday
+    @this_week_book = @documents.created_this_week
+    @last_week_book = @documents.created_last_week
   end
 
   def edit
@@ -23,7 +28,7 @@ class Public::EndUsersController < ApplicationController
 
   def confirm
   end
-  
+
   def withdrawal
     @end_user.update(is_deleted: true)
     reset_session
@@ -40,7 +45,7 @@ class Public::EndUsersController < ApplicationController
   def set_end_user
     @end_user = current_end_user
   end
-  
+
   def ensure_guest_user
     @end_user = EndUser.find(params[:id])
     if @end_user.name == "guestuser"
