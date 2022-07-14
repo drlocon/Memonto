@@ -22,7 +22,16 @@ class Public::DocumentsController < ApplicationController
   end
 
   def index
-    @tags = Tag.all
+    # ログイン中のユーザーのみのタグリストを取り出す
+    # documentsのtagsを取り出すため、each文を利用して配列に入れる
+    arr = []
+    current_end_user.documents.each do  |doc|
+      doc.tags.each do |tag|
+        arr.push(tag.id)
+      end
+    end
+    # 取り出した配列からdistinctを使って重複を除く
+    @tags = Tag.where(id: arr).distinct
     @documents = current_end_user.documents.includes(:end_user).all.order("created_at DESC")
   end
 
@@ -57,7 +66,7 @@ class Public::DocumentsController < ApplicationController
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @tags_search = @tag.documents.includes(:end_user)
+    @tags_search = @tag.documents.includes(:end_user).where(end_user_id: current_end_user.id)
   end
 
   private
