@@ -17,5 +17,9 @@
     <div class="col-10 offset-1 text-left">
       <%= render "public/documents/document_card", documents: @documents %>
     </div>
+    <!--ページネーション-->
+    <div class="col-6 offset-5 text-center">
+      <%= paginate @documents %>
+    </div>
   </div>
 </div>
