@@ -14,3 +14,14 @@ footer {
 .footer-text {
   color: #727068;
 }
+
+// card
+.cards__item {
+  flex-basis: 25%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.card:hover {
+  background-color: #b6b1a5;
+}

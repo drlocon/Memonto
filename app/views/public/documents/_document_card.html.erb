@@ -1,0 +1,32 @@
+<% documents.each do |document| %>
+  <%= link_to document_path(document) do %>
+    <div class="card  mt-3">
+      <!--card header-->
+      <div class="card-header", style="color:#727068; background-color:#f2f0ec">
+        <div class="d-flex bd-highlight">
+          <!--登録日-->
+          <div class="p-2 w-100 bd-highlight">
+            <%= l document.created_at, format: :long %>
+          </div>
+          <!--お気に入り-->
+          <div class="ml-auto p-2 bd-highlight">
+            <div class=<%= "favorite-" + document.id.to_s %>>
+              <%= render 'public/favorites/btn', document: document %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--card body-->
+      <div class="card-body", style="color:#4b4841; background-color:#ffffff">
+        <!--記録内容-->
+        <p class="card-text"><%= document.content.truncate(57) %></p>
+        <!--タグ-->
+        <% document.tags.each do |tag| %>
+          <a class="btn btn-outline-secondary btn-sm", disabled="disabled">
+            <i class="fas fa-tag"></i> <%= tag.name %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -224,8 +224,5 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
       age: "%"
-      mon: "%m"
-      daily: "%d"
-      times: "%H:%M"
     pm: 午後
         
