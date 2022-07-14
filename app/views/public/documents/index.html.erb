@@ -2,16 +2,20 @@
   <div class="row">
     <div class="col-6 offset-3 text-center">
       <h2 class="font-weight-bold">記録の一覧</h2>
-     </div>
-
-    <div class="col-10 offset-1 text-center">
-      タグリスト
+    </div>
+    <!--タグリスト-->
+    <div class="col-10 offset-1 text-center mt-3 mb-5">
       <% @tags.each do |list| %>
-        <%=link_to list.name, tag_search_documents_path(tag_id: list.id) %>
+        <%=link_to tag_search_documents_path(tag_id: list.id) do %>
+          <div class="btn btn-outline-secondary btn-sm rounded-pill">
+            <i class="fas fa-tag"></i> <%= list.name %>
+          </div>
+        <% end %>
       <% end %>
     </div>
-<div class="col-10 offset-1 text-left">
-    <%= render "public/documents/document_card", documents: @documents %>
+    <!--記録の一覧-->
+    <div class="col-10 offset-1 text-left">
+      <%= render "public/documents/document_card", documents: @documents %>
     </div>
   </div>
 </div>
