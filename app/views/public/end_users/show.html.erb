@@ -1,3 +1,11 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 offset-3 text-center mb-3">
+      <h2 class="font-weight-bold">
+        マイページ
+      </h2>
+    </div>
+
 <h1>ユーザー情報</h1>
 <p>画像</p>
 <%= image_tag @end_user.get_profile_image(100,100) %>
@@ -24,3 +32,7 @@
 
 <h1>1ヶ月の感情分析</h1>
 <%= render 'public/end_users/doughnut_chart', documents: @documents %>
+
+</div>
+</div>
+</div>

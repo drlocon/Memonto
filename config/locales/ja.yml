@@ -16,6 +16,7 @@ ja:
       end_user:
         name: 名前
         email: メールアドレス
+        profile_image: プロフィール画像
         password: パスワード
       admin:
         email: メールアドレス
