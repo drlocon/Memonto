@@ -44,10 +44,10 @@
     <!--ボタン-->
     <div class="col-10 offset-1 text-center">
       <div class="form-group mb-5">
-      <%= link_to '編集', edit_document_path(@document), class: "btn btn-outline-success btn-sm rounded-pill w-50 mt-1" %>
-      <%= link_to '削除', @document, method: :delete, data: { confirm: '本当に削除しますか？' },
-        class: "btn btn-outline-danger btn-sm rounded-pill w-50 mt-1 destroy_document_#{@document.id}" %>
-        </div>
+        <%= link_to '編集', edit_document_path(@document), class: "btn btn-outline-success btn-sm rounded-pill w-50 mt-1" %>
+        <%= link_to '削除', @document, method: :delete, data: { confirm: '本当に削除しますか？' },
+            class: "btn btn-outline-danger btn-sm rounded-pill w-50 mt-1 destroy_document_#{@document.id}" %>
+      </div>
     </div>
   </div>
 </div>

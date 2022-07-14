@@ -1,4 +1,7 @@
-<canvas id="myDoughnutChart" width="400" height="200"></canvas>
+<div class="chart_feeling">
+  <canvas id="myDoughnutChart" width="400" height="400"></canvas>
+  <p class="chart_title">1ヶ月の<br>感情グラフ</p>
+</div>
 <script>
   var ctx = document.getElementById('myDoughnutChart').getContext('2d');
   var myDoughnutChart = new Chart(ctx, {
@@ -15,22 +18,20 @@
           <%= @documents.current_tired.count %>, 
           ],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 102, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
+          'rgba(252, 227, 138, 0.7)',
+          'rgba(243, 129, 129, 0.7)',
+          'rgba(165, 222, 229, 0.7)',
+          'rgba(192, 255, 194, 0.7)',
+          'rgba(212, 165, 165, 0.7)'
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'rgba(30, 86, 160)',
+          'rgba(30, 86, 160)',
+          'rgba(30, 86, 160)',
+          'rgba(30, 86, 160)',
+           'rgba(30, 86, 160)'
         ],
-        borderWidth: 1
+        borderWidth: 0.2
       }]
     },
     options: {

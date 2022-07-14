@@ -1,38 +1,43 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-6 offset-3 text-center mb-3">
-      <h2 class="font-weight-bold">
-        マイページ
-      </h2>
+    <!--left side-->
+    <div class="col-2 text-center">
+      <h2 class="font-weight-bold">マイページ</h2>
+      <!--プロフィール画像-->
+      <%= image_tag @end_user.get_profile_image(100,100), class: "rounded-circle" %>
+      <!--ユーザー名-->
+      <p><%= @end_user.name %></p>
+      <!--お気に入り-->
+      <%=link_to end_user_favorites_path(current_end_user) do %>
+        <i class="fas fa-tag"></i> お気に入りリスト
+      <% end %>
+      <!--ボタン-->
+      <% if @end_user.name != "guestuser" %>
+        <%= link_to "編集", edit_end_user_path(@end_user), class: "btn btn-outline-success btn-sm rounded-pill mt-1 edit_user_#{@end_user.id}" %>
+        <%= link_to "退会", end_user_confirm_path(@end_user), class: "btn btn-outline-danger btn-sm rounded-pill mt-1 edit_user_#{@end_user.id}" %>
+      <% end %>
     </div>
-
-<h1>ユーザー情報</h1>
-<p>画像</p>
-<%= image_tag @end_user.get_profile_image(100,100) %>
-<p>ユーザー名</p>
-<%= @end_user.name %>
-
-<%= link_to "お気に入り", end_user_favorites_path(current_end_user) %>
-
-
-
-<% if @end_user.name != "guestuser" %>
-  <%= link_to "編集", edit_end_user_path(@end_user), class: "btn btn-primary edit_user_#{@end_user.id}" %>
-  <%= link_to "退会", end_user_confirm_path(@end_user), class: "btn btn-danger edit_user_#{@end_user.id}" %>
-<% end %>
-
-<h1>今月の投稿数</h1>
-<%= current_end_user.documents.where('created_at > ?', Date.today.month).count %>
-
-<h1>今までの投稿数</h1>
-<%= current_end_user.documents.all.count %>
-
-<h1>七日間の投稿数</h1>
-<%= render 'public/end_users/line_chart', documents: @documents %>
-
-<h1>1ヶ月の感情分析</h1>
-<%= render 'public/end_users/doughnut_chart', documents: @documents %>
-
-</div>
-</div>
+    <!--right side-->
+    <div class="col-10 text-center mb-1">
+      <!--投稿数-->
+      <h3>
+        今月の投稿数は
+        <%= current_end_user.documents.where('created_at > ?', Date.today.month).count %>件、
+        今までの投稿数は
+        <%= current_end_user.documents.all.count %>件です
+      </h3>
+      <!--投稿数のグラフ-->
+      <div class="d-flex justify-content-center">
+        <div style="position:relative;width:500px;height:350px;">
+          <%= render 'public/end_users/line_chart', documents: @documents %>
+        </div>
+      </div>
+      <!--感情のグラフ-->
+      <div class="d-flex justify-content-center">
+        <div style="position:relative;width:450px;height:450px;">
+          <%= render 'public/end_users/doughnut_chart', documents: @documents %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
