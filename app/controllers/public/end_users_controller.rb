@@ -1,11 +1,9 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_end_user
-  before_action :ensure_guest_user, only: [:edit, :update, :confirm, :withdrawal, :favorites]
+  before_action :ensure_guest_user, only: [:edit, :update, :confirm, :withdrawal]
 
   def show
-    @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
-    @favorite_list = Document.find(@favorites)
     @documents = @end_user.documents
   end
 
@@ -30,6 +28,12 @@ class Public::EndUsersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行しました"
     redirect_to root_path
+  end
+  
+  def favorites
+    @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
+    @favorite_list = Document.find(@favorites)
+    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page])
   end
 
   private

@@ -4,30 +4,9 @@
 <p>ユーザー名</p>
 <%= @end_user.name %>
 
-<p>お気に入り</p>
-件数：<%= @favorites.count %><br>
-<% if @favorite_list.present? %>
-  <% @favorite_list.each do |document| %>
-    <%= link_to document_path(document) do %>
-      <%= image_tag document.end_user.get_profile_image(100,100) %>
-      <div class="box">
-        <%= l document.created_at, format: :mon %>
-        <%= l document.created_at, format: :daily %>
-        <%= l document.created_at, format: :times %><br>
+<%= link_to "お気に入り", end_user_favorites_path(current_end_user) %>
 
-        <!--タグ-->
-        <p>
-          タグ：
-          <% document.tags.each do |tag| %>
-            ,<%= tag.name %>
-          <% end %>
-        </p>
-        <!--記録内容-->
-        <p>内容：<%= document.content %></p>
-      </div>
-    <% end %>
-  <% end %>
-<% end %>
+
 
 <% if @end_user.name != "guestuser" %>
   <%= link_to "編集", edit_end_user_path(@end_user), class: "btn btn-primary edit_user_#{@end_user.id}" %>
