@@ -13,7 +13,7 @@ class Public::SessionsController < Devise::SessionsController
 
   # ログイン後のパスを変更
   def after_sign_in_path_for(resource)
-    root_path
+    end_user_path(@end_user.id)
   end
 
   # ログアウト後のパスを変更
