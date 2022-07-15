@@ -3,20 +3,19 @@
     <!--ロゴ-->
     <a>
     <% if admin_signed_in? %>
-      <%= link_to "LOGO", admin_path %>
+      <%= link_to image_tag("logo.png"), admin_path, class: "logo-name" %>
     <% else %>
-      <%= link_to "LOGO", root_path %>
+      <%= link_to image_tag("logo.png"), root_path, class: "logo-name" %>
     <% end %>
     </a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <!--ユーザー側-->
       <% if end_user_signed_in? %>
-        <!--検索フォーム-->
-        <div class="">
-          <%= render 'layouts/search_form'%>
-        </div>
         <!--タブ-->
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mt-4">
+          <li class="nav-item mt-2 mx-3">
+            <%= render 'layouts/search_form'%>
+          </li>
           <li class="nav-item">
             <%= link_to new_document_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
               <div class="flex-colum mx-3 text_center">
@@ -25,7 +24,7 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to documents_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+            <%= link_to documents_path, class: 'btn btn-secondary rounded-pill my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-book-open"></i> 記録を見る
               </div>
@@ -39,7 +38,7 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_end_user_session_path, method: :delete, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+            <%= link_to destroy_end_user_session_path, method: :delete, class: 'btn btn-secondary rounded-pill my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-sign-out-alt"></i> ログアウト
               </div>
@@ -48,12 +47,11 @@
         </ul>
       <!--管理者側-->
       <% elsif admin_signed_in? %>
-        <!--検索フォーム-->
-        <div class="mr-5">
-          <%= render 'layouts/search_form'%>
-        </div>
         <!--タブ-->
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mt-4">
+          <li class="nav-item mt-2 mx-3">
+            <%= render 'layouts/search_form'%>
+          </li>
           <li class="nav-item">
             <%= link_to admin_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
               <div class="flex-colum mx-3 text_center">
@@ -62,7 +60,7 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-secondary rounded-pill my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-sign-out-alt"></i> ログアウト
               </div>
@@ -71,7 +69,7 @@
         </ul>
       <!--ログイン前-->
       <% else %>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mt-4">
           <li class="nav-item">
             <%= link_to new_end_user_registration_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
               <div class="flex-colum mx-3 text_center">
@@ -80,7 +78,7 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to new_end_user_session_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+            <%= link_to new_end_user_session_path, class: 'btn btn-secondary rounded-pill my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-sign-in-alt"></i> ログイン
               </div>
