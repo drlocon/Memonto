@@ -2,6 +2,10 @@
   <div class="row">
     <div class="col-6 offset-3 text-center">
       <h2 class="font-weight-bold">新規登録</h2>
+      <p class="mt-2 mb-4">
+        ゲストログインすることで<br>
+        新規登録せずにお試しでサービスを使うことができます。
+      </p>
 
       <%= form_with model: @end_user, url: end_user_registration_path do |f| %>
         <!--メッセージ-->
@@ -29,11 +33,14 @@
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-sm" %>
         </div>
-        <!--ボタン-->
+        <!--登録ボタン-->
         <div class="actions">
           <%= f.submit "新規登録", class: "btn btn-outline-success rounded-pill w-50 mt-1" %>
         </div>
       <% end %>
+      <!--ゲストログイン-->
+      <%= link_to "ゲストログイン", end_users_guest_sign_in_path, method: :post,
+          class: "btn btn-outline-info rounded-pill w-50 mt-3" %>
 
       <div class="row text-center mt-4">
         <div class="col-12 col-md-10 offset-md-1 py-4">

@@ -1,12 +1,9 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-6 offset-3 text-center">
-      <h2 class="font-weight-bold">記録の一覧</h2>
+    <div class="col-6 offset-3 text-center mt-3 mb-5">
+      <h2 class="font-weight-bold">キーワード検索結果</h2>
     </div>
-    <div class="col-10 offset-1 text-center mt-3 mb-5">
-      <h4>検索結果は<%= @words_search.count %>件です</h4>
-    </div>
-    
+
     <div class="col-10 offset-1 text-left">
       <% @words_search.each do |document| %>
         <%= link_to document_path(document) do %>
@@ -32,7 +29,7 @@
               <p class="card-text"><%= document.content.truncate(57) %></p>
               <!--タグ-->
               <% document.tags.each do |tag| %>
-                <a class="btn btn-outline-dark btn-sm rounded-pill disabled" 
+                <a class="btn btn-outline-dark btn-sm rounded-pill disabled"
                     tabindex="-1" role="button" aria-disabled="true">
                   <i class="fas fa-tag"></i> <%= tag.name %>
                 </a>
@@ -46,6 +43,6 @@
     <div class="col-6 offset-5 text-center">
       <%= paginate @words_search %>
     </div>
-    
+
   </div>
 </div>

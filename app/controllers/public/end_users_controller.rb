@@ -1,7 +1,8 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_end_user
-  before_action :ensure_guest_user, only: [:edit, :update, :confirm, :withdrawal]
+  before_action :ensure_guest_user, only: [:edit, :update]
+  before_action :check_guest_user, only: [:confirm, :withdrawal]
 
   def show
     @documents = @end_user.documents
@@ -29,7 +30,7 @@ class Public::EndUsersController < ApplicationController
     flash[:notice] = "退会処理を実行しました"
     redirect_to root_path
   end
-  
+
   def favorites
     @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
     @favorite_list = Document.find(@favorites)
@@ -48,6 +49,14 @@ class Public::EndUsersController < ApplicationController
 
   def ensure_guest_user
     @end_user = EndUser.find(params[:id])
+    if @end_user.name == "guestuser"
+      flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
+      redirect_to end_user_path(current_end_user)
+    end
+  end
+  
+  def check_guest_user
+    @end_user = EndUser.find(params[:end_user_id])
     if @end_user.name == "guestuser"
       flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
       redirect_to end_user_path(current_end_user)
