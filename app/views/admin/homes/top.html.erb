@@ -1,17 +1,39 @@
-<h1>ユーザーの一覧</h1>
-<% @end_users.each do |end_user| %>
-  <%= link_to admin_end_user_path(end_user) do %>
-    <p>ID</p>
-    <%= end_user.id %>
-    <p>ユーザー名</p>
-    <%= end_user.name %>
-    <p>メールアドレス</p>
-    <%= end_user.email %>
-    <p>ステータス</p>
-    <% if end_user.is_deleted %>
-      <p>退会</p>
-    <% else %>
-      <p>有効</p>
-    <% end %>
-  <% end %>
-<% end %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 offset-3 text-center">
+      <h2 class="font-weight-bold">ユーザーの一覧</h2>
+    </div>
+    <div class="col-11 offset-1 text-left">
+      <div class="d-flex flex-wrap justify-left-around">
+        <% @end_users.each do |end_user| %>
+        <div class="mt-3 mb-3 ml-2">
+          <%= link_to admin_end_user_path(end_user) do %>
+            <div class="card" style="width: 15rem; color:#4b4841; background-color:#ffffff;">
+              <!--プロフィール画像-->
+              <%= image_tag end_user.get_profile_image(100,180), class: "card-img-top", alt: "Card image cap",
+                  style: "height: 150px; width: auto; object-fit: cover" %>
+              <div class="card-body">
+                <!--ユーザー名-->
+                <h5 class="card-title"><%= end_user.name %></h5>
+                <!--ステータス-->
+                <p class="card-text">
+                  ステータス
+                  <% if end_user.is_deleted %>
+                    退会 <i class="fas fa-comment-slash"></i>
+                  <% else %>
+                    有効 <i class="fas fa-comment-dots"></i>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!--ページネーション-->
+    <div class="col-6 offset-5 text-center">
+      <%= paginate @end_users %>
+    </div>
+  </div>
+</div>
