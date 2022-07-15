@@ -1,49 +1,98 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
+<header class="">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <!--ロゴ-->
+    <a>
+    <% if admin_signed_in? %>
+      <%= link_to image_tag("logo.png"), admin_path, class: "logo-name" %>
+    <% else %>
+      <%= link_to image_tag("logo.png"), root_path, class: "logo-name" %>
+    <% end %>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <!--ユーザー側-->
       <% if end_user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "記録をつける", new_document_path, class: 'btn btn-primary' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "記録を見る", documents_path, class: 'btn btn-primary' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ユーザー情報", end_user_path(current_end_user), class: 'btn btn-primary' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'btn btn-primary' %>
-        </li>
-        <li>
-          <%= form_with url: word_search_documents_path, local: true, method: :get do |f| %>
-            <%= f.text_field :keyword, placeholder: "Search", class: "" %>
-            <% f.submit %>
-          <% end %>
-        </li>
+        <!--タブ-->
+        <ul class="navbar-nav ml-auto mt-4">
+          <li class="nav-item mt-2 mx-3">
+            <%= render 'layouts/search_form'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_document_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-pen-nib"></i> 記録を書く
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to documents_path, class: 'btn btn-secondary rounded-pill my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-book-open"></i> 記録を見る
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to end_user_path(current_end_user), class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-user"></i> マイページ
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_end_user_session_path, method: :delete, class: 'btn btn-secondary rounded-pill my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              </div>
+            <% end %>
+          </li>
+        </ul>
+      <!--管理者側-->
       <% elsif admin_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "ユーザ一覧", admin_path, class: 'btn btn-primary' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-primary' %>
-        </li>
-        <li>
-          <%= form_with url: word_search_admin_end_users_path, local: true, method: :get do |f| %>
-            <%= f.text_field :keyword, placeholder: "Search", class: "" %>
-            <% f.submit %>
-          <% end %>
-        </li>
+        <!--タブ-->
+        <ul class="navbar-nav ml-auto mt-4">
+          <li class="nav-item mt-2 mx-3">
+            <%= render 'layouts/search_form'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to admin_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-users"></i> ユーザー
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-secondary rounded-pill my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              </div>
+            <% end %>
+          </li>
+        </ul>
+      <!--ログイン前-->
       <% else %>
-        <li class="nav-item">
-          <%= link_to "新規登録", new_end_user_registration_path, class: 'btn btn-primary' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログイン", new_end_user_session_path, class: 'btn btn-primary' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ゲストログイン", end_users_guest_sign_in_path, method: :post, class: 'btn btn-primary' %>
-        </li>
+        <ul class="navbar-nav ml-auto mt-4">
+          <li class="nav-item">
+            <%= link_to new_end_user_registration_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-user-plus"></i> 新規登録
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_end_user_session_path, class: 'btn btn-secondary rounded-pill my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to end_users_guest_sign_in_path, method: :post, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-user-check"></i> ゲストログイン
+              </div>
+            <% end %>
+          </li>
+        </ul>
       <% end %>
-    </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
+</header>

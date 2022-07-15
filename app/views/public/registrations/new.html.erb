@@ -1,37 +1,54 @@
-<h2>新規登録</h2>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-6 offset-3 text-center">
+      <h2 class="font-weight-bold">新規登録</h2>
+      <p class="mt-2 mb-4">
+        ゲストログインすることで<br>
+        新規登録せずにお試しでサービスを使うことができます。
+      </p>
 
-<%= form_with model: @end_user, url: end_user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, autofocus: true %>
+      <%= form_with model: @end_user, url: end_user_registration_path do |f| %>
+        <!--メッセージ-->
+        <%= render "public/shared/error_messages", resource: resource %>
+        <!--名前-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, autofocus: true, class: "form-control form-control-sm" %>
+        </div>
+        <!--メールアドレス-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :email %><br>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control form-control-sm" %>
+        </div>
+        <!--パスワード-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+            (<%= @minimum_password_length %> 文字以上)
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-sm" %>
+        </div>
+        <!--パスワード確認用-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :password_confirmation %><br>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-sm" %>
+        </div>
+        <!--登録ボタン-->
+        <div class="actions">
+          <%= f.submit "新規登録", class: "btn btn-outline-success rounded-pill w-50 mt-1" %>
+        </div>
+      <% end %>
+      <!--ゲストログイン-->
+      <%= link_to "ゲストログイン", end_users_guest_sign_in_path, method: :post,
+          class: "btn btn-outline-info rounded-pill w-50 mt-3" %>
+
+      <div class="row text-center mt-4">
+        <div class="col-12 col-md-10 offset-md-1 py-4">
+          <h4 class="font-weight-bold">ユーザー登録がお済みの方</h4>
+          <p><%= render "public/shared/links" %>からログインしてください。</p>
+        </div>
+      </div>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    (<%= @minimum_password_length %> 文字以上)
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
-
-<p>
-  ユーザー登録がお済みでない方は<br>
-  <%= render "public/shared/links" %>から新規登録を行ってください。
-</p>
+</div>

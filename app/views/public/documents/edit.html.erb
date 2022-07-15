@@ -1,23 +1,37 @@
-<h1><%= l @document.created_at, format: :long %>の記録を編集</h1>
-<div class=<%= "favorite-" + @document.id.to_s %> >
-  <%= render 'public/favorites/btn', document: @document %>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-6 offset-3 text-center">
+      <h2 class="font-weight-bold">
+        <%= l @document.created_at, format: :long %>の記録を編集
+      </h2>
+
+      <%= form_with model: @document do |f| %>
+        <!--タグ投稿フォーム-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :tag_name, "タグをつけてください" %><br>
+          <%= f.text_field :tag_name, autofocus: true, value: @tag_list, class: "form-control form-control-sm" %>
+        </div>
+        <!--感情ステータスを選択-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :feeling, "今の気持ちを選んでください" %></br>
+          <%= f.select :feeling, Document.feelings.keys.map { |k| [I18n.t("enums.document.feeling.#{k}"), k]},
+              { prompt: false }, class: "form-control form-control-sm" %>
+        </div>
+        <!--記録投稿フォーム-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :content, "内容を書いてください" %><br>
+          <%= f.text_area :content, class: "form-control form-control-sm" %>
+        </div>
+        <!--ボタン-->
+        <div class="form-group mb-5">
+          <%= f.submit "更新する", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
+        </div>
+      <% end %>
+    </div>
+      
+    <div class="col-6 offset-3 text-center mb-3">
+      <%= link_to '詳細へ戻る', @document, class: "document_#{@document.id}" %> | 
+      <%= link_to '一覧へ戻る', documents_path, class: "back" %>
+    </div>
+  </div>
 </div>
-
-<%= form_with model: @document do |f| %>
-  <!--タグ投稿フォーム-->
-  <h4>タグをつける</h4>
-  <%= f.text_field :tag_name, value: @tag_list %>
-  
-  <!--感情ステータスを選択-->
-  <h4>あの時の気持ち</h4>
-  <%= f.select :feeling, Document.feelings.keys.map { |k| [I18n.t("enums.document.feeling.#{k}"), k]} %><br>
-  
-  <!--記録投稿フォーム-->
-  <h4>記録の内容</h4>
-  <%= f.text_area :content %><br>
-  
-  <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
-<% end %>
-
-<%= link_to '詳細へ戻る', @document, class: "document_#{@document.id}" %> |
-<%= link_to '一覧へ戻る', documents_path, class: "back" %>

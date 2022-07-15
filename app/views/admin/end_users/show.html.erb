@@ -1,15 +1,43 @@
-<h1>ユーザー詳細画面</h1>
-<p>ユーザーID</p>
-<%= @end_user.id %>
-<p>ユーザー名</p>
-<%= @end_user.name %>
-<p>メールアドレス</p>
-<%= @end_user.email %>
-<p>ステータス</p>
-<% if @end_user.is_deleted %>
-  退会
-<% else %>
-  有効
-<% end %>
-<br>
-<%=link_to "編集", edit_admin_end_user_path(@end_user), class: "btn btn-primary" %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 offset-3 text-center mb-3">
+      <h2 class="font-weight-bold">ユーザーの詳細</h2>
+    </div>
+    
+    <div class="col-6 offset-3 text-center mb-3">
+      <!--画像-->
+      <%= image_tag @end_user.get_profile_image(200,200), class: "rounded-circle" %><br>
+      <!--ユーザー名-->
+      <h4 class="font-weight-bold mt-2"><%= @end_user.name %></h4>
+    </div>
+    
+    <div class="col-6 offset-3 text-center mb-3">
+      <table class="table table-borderless">
+        <tr>
+          <th>ID</th>
+          <td><%= @end_user.id %></tr>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @end_user.email %></tr>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td>
+            <% if @end_user.is_deleted %>
+              退会 <i class="fas fa-comment-slash"></i>
+            <% else %>
+              有効 <i class="fas fa-comment-dots"></i>
+            <% end %>
+           </td>
+        </tr>
+      </table>
+    </div>
+    
+    <!--ボタン-->
+    <div class="col-6 offset-3 text-center mb-3">
+      <%=link_to "編集", edit_admin_end_user_path(@end_user),
+          class: "btn btn-outline-success btn-sm rounded-pill mt-1 mb-3 w-50" %>
+    </div>
+  </div>        
+</div>

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :end_users, only: [:show, :edit, :update] do
       get "confirm" => "end_users#confirm"
       patch "withdrawal" => "end_users#withdrawal"
+      get "favorites" => "end_users#favorites"
     end
 
     resources :documents do

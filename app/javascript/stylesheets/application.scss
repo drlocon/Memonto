@@ -1,2 +1,87 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+// 全体の設定
+a, h2, h3 {
+  color: #292830;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #9b5d73;
+}
+
+a:active {
+  color: #453953;
+}
+
+// header
+header{
+  height: 100px;
+  background-color: #ece6d6;
+}
+
+.logo-name {
+  text-decoration: none;
+  font-size: 40px;
+  line-height: 80px;
+}
+
+// footer
+footer {
+  margin-top: auto;
+  background-color: #ece6d6;
+}
+
+.footer-text {
+  color: #727068;
+}
+
+// message
+.notifications {
+  color: #fff;
+  text-align: center;
+  position :absolute;
+  top: 10;
+  width: 100%;
+  z-index: 3;
+}
+
+.notice {
+  background-color: #00b8a9;
+}
+
+.alert {
+  padding: 0;
+  background-color: #f6416c;
+  htight: 20px;
+}
+
+// card
+.cards__item {
+  flex-basis: 25%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.card:hover {
+  background-color: #b6b1a5;
+}
+
+// chart
+.chart_price {
+  position: relative;
+}
+
+.chart_title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); 
+}

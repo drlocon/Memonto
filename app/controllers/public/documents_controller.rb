@@ -32,7 +32,7 @@ class Public::DocumentsController < ApplicationController
     end
     # 取り出した配列からdistinctを使って重複を除く
     @tags = Tag.where(id: arr).distinct
-    @documents = current_end_user.documents.includes(:end_user).all.order("created_at DESC")
+    @documents = current_end_user.documents.includes(:end_user).all.order("created_at DESC").page(params[:page])
   end
 
   def show
@@ -61,12 +61,12 @@ class Public::DocumentsController < ApplicationController
   end
 
   def word_search
-    @words_search = current_end_user.documents.includes(:end_user).word_search(params[:keyword])
+    @words_search = current_end_user.documents.includes(:end_user).word_search(params[:keyword]).page(params[:page])
   end
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @tags_search = @tag.documents.includes(:end_user).where(end_user_id: current_end_user.id)
+    @tags_search = @tag.documents.includes(:end_user).where(end_user_id: current_end_user.id).page(params[:page])
   end
 
   private

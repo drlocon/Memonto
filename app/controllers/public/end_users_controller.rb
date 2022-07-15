@@ -1,11 +1,10 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_end_user
-  before_action :ensure_guest_user, only: [:edit, :update, :confirm, :withdrawal, :favorites]
+  before_action :ensure_guest_user, only: [:edit, :update]
+  before_action :check_guest_user, only: [:confirm, :withdrawal]
 
   def show
-    @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
-    @favorite_list = Document.find(@favorites)
     @documents = @end_user.documents
   end
 
@@ -32,6 +31,12 @@ class Public::EndUsersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
+    @favorite_list = Document.find(@favorites)
+    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page])
+  end
+
   private
 
   def end_user_params
@@ -44,6 +49,14 @@ class Public::EndUsersController < ApplicationController
 
   def ensure_guest_user
     @end_user = EndUser.find(params[:id])
+    if @end_user.name == "guestuser"
+      flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
+      redirect_to end_user_path(current_end_user)
+    end
+  end
+  
+  def check_guest_user
+    @end_user = EndUser.find(params[:end_user_id])
     if @end_user.name == "guestuser"
       flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
       redirect_to end_user_path(current_end_user)
