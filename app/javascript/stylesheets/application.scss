@@ -1,6 +1,19 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+// 全体の設定
+a, h2, h3 {
+  color: #5b2e35;
+}
+
+a:hover {
+  color: #9b5d73;
+}
+
+a:active {
+  color: #453953;
+}
+
 // header
 header{
   height: 100px;
@@ -9,14 +22,14 @@ header{
 
 .logo-name {
   text-decoration: none;
-  color: #181717;
   font-size: 40px;
   line-height: 80px;
 }
 
 // footer
 footer {
-  background-color:#ece6d6;
+  margin-top: auto;
+  background-color: #ece6d6;
 }
 
 .footer-text {
@@ -60,14 +73,14 @@ footer {
 }
 
 .chart_title {
-   position: absolute;
-   top: 0;
-   left: 0;
-   margin: auto;
-   right: 0;
-   margin: auto;
-   text-align: center;
-   top: 50%;
-   -webkit-transform: translateY(-50%);
-   transform: translateY(-50%); 
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); 
 }
