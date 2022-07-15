@@ -1,44 +1,45 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
     <!--ロゴ-->
+    <a>
     <% if admin_signed_in? %>
       <%= link_to "LOGO", admin_path %>
     <% else %>
       <%= link_to "LOGO", root_path %>
     <% end %>
-  
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <!--ユーザー側-->
       <% if end_user_signed_in? %>
         <!--検索フォーム-->
-        <div class="mr-5">
+        <div class="">
           <%= render 'layouts/search_form'%>
         </div>
         <!--タブ-->
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <%= link_to new_document_path do %>
+            <%= link_to new_document_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-pen-nib"></i> 記録を書く
               </div>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to documents_path do %>
+            <%= link_to documents_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-book-open"></i> 記録を見る
               </div>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to end_user_path(current_end_user) do %>
+            <%= link_to end_user_path(current_end_user), class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-user"></i> マイページ
               </div>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_end_user_session_path, method: :delete do %>
+            <%= link_to destroy_end_user_session_path, method: :delete, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-sign-out-alt"></i> ログアウト
               </div>
