@@ -1,16 +1,49 @@
-<h1><%= @end_user.name %>さんの登録情報</h1>
-<%= form_with model: @end_user, url: admin_end_user_path do |f| %>
-  <p>ユーザーID</p>
-  <%= @end_user.id %>
-  <p>ユーザー名</p>
-  <%= f.text_field :name %>
-  <p>メールアドレス</p>
-  <%= f.text_field :email %>
-  <p>ステータス</p>
-  <%= f.radio_button :is_deleted, "true" %> 退会
-  <%= f.radio_button :is_deleted, "false" %> 有効
-  <br>
-  <%= f.submit "変更を保存", class: "btn btn-success" %>
-<% end %>
-<br>
-<%=link_to "ユーザー詳細画面に戻る", admin_end_user_path(@end_user), class: "btn btn-primary" %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 offset-3 text-center mb-3">
+      <h2 class="font-weight-bold"><%= @end_user.name %>さんの情報を編集</h2>
+    </div>
+    <!--画像-->
+    <div class="col-6 offset-3 text-center mb-3">
+      <%= image_tag @end_user.get_profile_image(200,200), class: "rounded-circle" %><br>
+    </div>
+    
+    <!--編集フォーム-->
+    <div class="col-6 offset-3 text-center mb-3">
+      <%= form_with model: @end_user, url: admin_end_user_path do |f| %>
+        <!--ID-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :id %><br>
+          <%= f.text_field :id, :readonly => true, class: "form-control form-control-sm" %>
+        </div>
+        <!--ユーザー名-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, autofocus: true, class: "form-control form-control-sm" %>
+        </div>
+        <!--メールアドレス-->
+        <div class="form-group text-left mt-3 col-8 offset-2">
+          <%= f.label :email %><br>
+          <%= f.text_field :email, class: "form-control form-control-sm" %>
+        </div>
+        <!--ステータス-->
+        <div class="form-group text-center mt-3 col-8 offset-2">
+          <%= f.radio_button :is_deleted, "true", class: "mr-1" %>
+          退会<i class="fas fa-comment-slash"></i>&emsp;
+          <%= f.radio_button :is_deleted, "false", class: "mr-1" %>
+          有効 <i class="fas fa-comment-dots"></i>
+        </div>
+        <!--更新ボタン-->
+        <div class="form-group mt-3 mb-5">
+          <%= f.submit "更新する", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
+        </div>
+      <% end %>
+    </div>
+    
+    <!--戻るボタン-->
+    <div class="col-6 offset-3 text-center mb-3">
+      <%=link_to "ユーザー詳細画面に戻る", admin_end_user_path(@end_user) %>
+    </div>
+    
+  </div>
+</div>

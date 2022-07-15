@@ -7,7 +7,7 @@
         <!--タグ投稿フォーム-->
         <div class="form-group text-left mt-3 col-8 offset-2">
           <%= f.label :tag_name, "タグをつけてください" %><br>
-          <%= f.text_field :tag_name, placeholder: "複数つける場合は,で区切ってください", class: "form-control form-control-sm" %>
+          <%= f.text_field :tag_name, autofocus: true, placeholder: "複数つける場合は,で区切ってください", class: "form-control form-control-sm" %>
         </div>
         <!--感情ステータスを選択-->
         <div class="form-group text-left mt-3 col-8 offset-2">
