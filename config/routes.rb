@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # publicサイド
   scope module: :public do
     root to: 'homes#top'
+    get '/about' => "homes#about"
 
     resources :end_users, only: [:show, :edit, :update] do
       get "confirm" => "end_users#confirm"
