@@ -11,17 +11,27 @@
           記録した出来事を振り返り、自分と向き合う時間を作りましょう。
         </p>
         <div class="mb-5">
-          <!--新規登録-->
-          <%= link_to new_end_user_registration_path, class: 'btn btn-success rounded-pill mx-3 my-1' do %>
-            <div class="flex-colum mx-3 text_center">
-              <i class="fas fa-user-plus"></i> 新規登録
-            </div>
-          <% end %>
-          <!--ゲストログイン-->
-          <%= link_to end_users_guest_sign_in_path, method: :post, class: 'btn btn-primary rounded-pill mx-3 my-1' do %>
-            <div class="flex-colum mx-3 text_center">
-              <i class="fas fa-user-check"></i> ゲストログイン
-            </div>
+          <!--ログイン中の場合-->
+          <% if end_user_signed_in? %>
+            <%= link_to new_document_path, class: 'btn btn-info rounded-pill mx-3 my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-pen-nib"></i> 記録を書く
+              </div>
+            <% end %>
+          <!--ログイン前の場合-->
+          <% else %>
+            <!--新規登録-->
+            <%= link_to new_end_user_registration_path, class: 'btn btn-success rounded-pill mx-3 my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-user-plus"></i> 新規登録
+              </div>
+            <% end %>
+            <!--ゲストログイン-->
+            <%= link_to end_users_guest_sign_in_path, method: :post, class: 'btn btn-primary rounded-pill mx-3 my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-user-check"></i> ゲストログイン
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
