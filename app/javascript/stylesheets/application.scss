@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'header';
 
 // 全体の設定
 a, h2, h3 {
@@ -13,6 +14,10 @@ a:hover {
 
 a:active {
   color: #453953;
+}
+
+body {
+  margin-bottom: 120px;
 }
 
 // header

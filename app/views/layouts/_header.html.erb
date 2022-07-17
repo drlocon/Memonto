@@ -1,13 +1,12 @@
-<header class="">
-  <nav class="navbar navbar-expand-lg navbar-light">
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg">
     <!--ロゴ-->
-    <a>
     <% if admin_signed_in? %>
       <%= link_to image_tag("logo.png"), admin_path, class: "logo-name" %>
     <% else %>
       <%= link_to image_tag("logo.png"), root_path, class: "logo-name" %>
     <% end %>
-    </a>
+    
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <!--ユーザー側-->
       <% if end_user_signed_in? %>
@@ -101,5 +100,67 @@
         </ul>
       <% end %>
     </div>
+    
+    <!--ハンバーガーメニュー-->
+    <div class="hm-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <div id="hm-menu">
+      <ul>
+        <% if end_user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "記録を書く", new_document_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "記録を見る", documents_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "マイページ", end_user_path(current_end_user), class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "ユーザー", admin_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "ABOUT", about_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_end_user_registration_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_end_user_session_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ゲストログイン", end_users_guest_sign_in_path, method: :post, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <script>
+      $(".hm-icon").click(function () {//ボタンがクリックされたら
+
+        $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
+        $("#hm-menu").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
+
+      });
+
+      $("#hm-menu a").click(function () {//ナビゲーションのリンクがクリックされたら
+
+        $(".hm-icon").removeClass('active');//ボタンの activeクラスを除去し
+        $("#hm-menu").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+
+      });
+    </script>
   </nav>
 </header>
