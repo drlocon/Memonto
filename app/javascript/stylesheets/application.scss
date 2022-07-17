@@ -57,6 +57,23 @@ footer {
   htight: 20px;
 }
 
+// feeling button
+// ラジオボタンの丸を消す
+.hidden_radio {
+  display: none;
+}
+
+// feelingアイコン
+.feeling_icon {
+  font-size: 35pt;
+  margin: 0 20px;
+}
+
+// アイコンが選択された時
+.check_radio {
+  color: red;
+}
+
 // card
 .cards__item {
   flex-basis: 25%;
