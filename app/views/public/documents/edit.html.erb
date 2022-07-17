@@ -1,29 +1,52 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-6 offset-3 text-center">
+    <div class="col-8 offset-2 text-center">
       <h2 class="font-weight-bold">
         <%= l @document.created_at, format: :long %>の記録を編集
       </h2>
 
       <%= form_with model: @document do |f| %>
         <!--タグ投稿フォーム-->
-        <div class="form-group text-left mt-3 col-8 offset-2">
+        <div class="form-group text-left mt-3 mb-5 col-8 offset-2">
           <%= f.label :tag_name, "タグをつけてください" %><br>
           <%= f.text_field :tag_name, autofocus: true, value: @tag_list, class: "form-control form-control-sm" %>
         </div>
         <!--感情ステータスを選択-->
         <div class="form-group text-left mt-3 col-8 offset-2">
-          <%= f.label :feeling, "今の気持ちを選んでください" %></br>
-          <%= f.select :feeling, Document.feelings.keys.map { |k| [I18n.t("enums.document.feeling.#{k}"), k]},
-              { prompt: false }, class: "form-control form-control-sm" %>
+          <p>今の気持ちを選んでください</p>
+          <!--感情：happy-->
+          <%= f.radio_button :feeling, :happy, class: "hidden_radio" %>
+          <%= f.label :feeling, class: 'feeling_icon check_radio', for: "document_feeling_happy" do %>
+            <i class="radio_icon fas fa-grin"></i>
+          <% end %>
+          <!--感情：anger-->
+          <%= f.radio_button :feeling, :anger, class: "hidden_radio" %>
+          <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_anger" do %>
+            <i class="fas fa-angry default-icon"></i>
+          <% end %>
+          <!--感情：normal-->
+          <%= f.radio_button :feeling, :normal, class: "hidden_radio" %>
+          <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_normal" do %>
+            <i class="fas fa-meh"></i>
+          <% end %>
+          <!--感情：sorrow-->
+          <%= f.radio_button :feeling, :sorrow, class: "hidden_radio" %>
+          <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_sorrow" do %>
+            <i class="fas fa-sad-tear"></i>
+          <% end %>
+          <!--感情：tired-->
+          <%= f.radio_button :feeling, :tired, class: "hidden_radio" %>
+          <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_tired" do %>
+            <i class="fas fa-tired"></i>
+          <% end %>
         </div>
         <!--記録投稿フォーム-->
-        <div class="form-group text-left mt-3 col-8 offset-2">
+        <div class="form-group text-left mt-4 col-8 offset-2">
           <%= f.label :content, "内容を書いてください" %><br>
           <%= f.text_area :content, class: "form-control form-control-sm" %>
         </div>
         <!--ボタン-->
-        <div class="form-group mb-5">
+        <div class="form-group mt-5 mb-5">
           <%= f.submit "更新する", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
         </div>
       <% end %>

@@ -69,9 +69,14 @@ footer {
   margin: 0 20px;
 }
 
+.feeling_icon:hover {
+  color: #a6d0e4;
+  transform: scale(0.99, 0.99) translateY(2px);
+}
+
 // アイコンが選択された時
 .check_radio {
-  color: red;
+  color: #3ec1d3;
 }
 
 // card
