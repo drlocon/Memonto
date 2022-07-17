@@ -71,6 +71,13 @@
       <% else %>
         <ul class="navbar-nav ml-auto mt-4">
           <li class="nav-item">
+            <%= link_to about_path, class: 'btn btn-secondary rounded-pill my-1' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-question-circle"></i> ABOUT
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= link_to new_end_user_registration_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' do %>
               <div class="flex-colum mx-3 text_center">
                 <i class="fas fa-user-plus"></i> 新規登録
