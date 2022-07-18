@@ -7,7 +7,6 @@
   var myDoughnutChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ['幸せ', '怒り', '悲しみ', '普通', '疲れ'],
       datasets: [{
         label: 'データの数',
         data: [
@@ -18,11 +17,11 @@
           <%= @documents.current_tired.count %>, 
           ],
         backgroundColor: [
-          'rgba(252, 227, 138, 0.7)',
-          'rgba(243, 129, 129, 0.7)',
-          'rgba(165, 222, 229, 0.7)',
-          'rgba(192, 255, 194, 0.7)',
-          'rgba(212, 165, 165, 0.7)'
+          'rgba(246, 201, 14, 0.5)',
+          'rgba(244, 124, 124, 0.5)',
+          'rgba(112, 161, 215, 0.5)',
+          'rgba(161, 222, 147, 0.5)',
+          'rgba(170, 150, 218, 0.5)'
         ],
         borderColor: [
           'rgba(30, 86, 160)',

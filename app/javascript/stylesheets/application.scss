@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'header';
 
 // 全体の設定
 a, h2, h3 {
@@ -15,6 +16,10 @@ a:active {
   color: #453953;
 }
 
+body {
+  margin-bottom: 120px;
+}
+
 // header
 header{
   height: 100px;
@@ -25,6 +30,10 @@ header{
   text-decoration: none;
   font-size: 40px;
   line-height: 80px;
+}
+
+.hm-icon {
+  display: none;
 }
 
 // footer
@@ -57,6 +66,29 @@ footer {
   htight: 20px;
 }
 
+// feeling button
+// ラジオボタンの丸を消す
+.hidden_radio {
+  display: none;
+}
+
+// feelingアイコン
+.feeling_icon {
+  font-size: 35pt;
+  margin: 0 20px;
+  color: #543d46;
+}
+
+.feeling_icon:hover {
+  color: #a6d0e4;
+  transform: scale(0.99, 0.99) translateY(2px);
+}
+
+// アイコンが選択された時
+.check_radio {
+  color: #3ec1d3;
+}
+
 // card
 .cards__item {
   flex-basis: 25%;
@@ -83,5 +115,39 @@ footer {
   text-align: center;
   top: 50%;
   -webkit-transform: translateY(-50%);
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
+}
+
+// pagination
+// ページネーション
+.pagination>li>a {
+  border: none;   //枠線消去
+  color: #696969; // 文字色
+  text-align: center;
+}
+
+// 表示しているページ番号のデザイン
+.pagination>.active>a {
+  background: #ff002b; // 背景色
+  border-radius: 50%;  //角丸
+}
+
+// ホバー時のデザイン
+.pagination>li>a:hover {
+  border-radius: 50%; //角丸
+}
+
+
+
+// 1000px以下の画面設定
+@media screen and (max-width: 1000px) {
+  .hm-icon {
+    display: block;
+  }
+  
+  .img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }

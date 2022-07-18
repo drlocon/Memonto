@@ -1,6 +1,6 @@
 <% if document.favorited_by?(current_end_user) %>
   <%= link_to document_favorites_path(document), method: :delete, remote: true do %>
-    <i class="fas fa-bookmark fa-lg" aria-hidden="true" style="color: #f2b219;"></i>
+    <i class="fas fa-bookmark fa-lg" aria-hidden="true" style="color: #ffb400;"></i>
   <% end %>
 <% else %>
   <%= link_to document_favorites_path(document), method: :post, remote: true do %>

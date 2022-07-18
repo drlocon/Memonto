@@ -3,7 +3,6 @@
     <div class="col-6 offset-3 text-center mt-3 mb-5">
       <h2 class="font-weight-bold">キーワード検索結果</h2>
     </div>
-
     <div class="col-10 offset-1 text-left">
       <% @words_search.each do |document| %>
         <%= link_to document_path(document) do %>
@@ -39,10 +38,12 @@
         <% end %>
       <% end %>
     </div>
-    <!--ページネーション-->
-    <div class="col-6 offset-5 text-center">
-      <%= paginate @words_search %>
+    <div class="col-6 offset-3 text-center mb-3">
+      <%= link_to '一覧へ戻る', documents_path, class: 'btn btn-outline-secondary rounded-pill mx-3 my-1' %>
     </div>
-
+    <!--ページネーション-->
+    <p class="col-5 text-center mt-3 mb-5">
+      <%= paginate @words_search %>
+    </p>
   </div>
 </div>

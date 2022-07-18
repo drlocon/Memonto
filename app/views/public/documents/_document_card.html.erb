@@ -19,7 +19,22 @@
       <!--card body-->
       <div class="card-body", style="color:#4b4841; background-color:#ffffff">
         <!--記録内容-->
-        <p class="card-text"><%= document.content.truncate(57) %></p>
+        <p class="card-text">
+          <!--感情ステータス-->
+          <% if document.feeling == "happy" %>
+            <i class="fas fa-grin fa-lg" style="color: #f6c90e"></i>
+          <% elsif document.feeling == "anger" %>
+            <i class="fas fa-angry fa-lg" style="color: #f47c7c"></i>
+          <% elsif document.feeling == "sorrow" %>
+            <i class="fas fa-sad-tear fa-lg" style="color: #70a1d7"></i>
+          <% elsif document.feeling == "normal" %>
+            <i class="fas fa-meh fa-lg" style="color: #a1de93"></i>
+          <% elsif document.feeling == "tired" %>
+            <i class="fas fa-tired fa-lg" style="color: #aa96da"></i>
+          <% end %>
+          <!--文章-->
+          <%= document.content.truncate(55) %>
+        </p>
         <!--タグ-->
         <% document.tags.each do |tag| %>
           <a class="btn btn-outline-dark btn-sm rounded-pill disabled" 
