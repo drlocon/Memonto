@@ -6,12 +6,11 @@
     <% else %>
       <%= link_to image_tag("logo.png"), root_path, class: "logo-name" %>
     <% end %>
-    
+    <!--メニュー-->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <!--ユーザー側-->
-      <% if end_user_signed_in? %>
-        <!--タブ-->
-        <ul class="navbar-nav ml-auto mt-4">
+      <ul class="navbar-nav ml-auto mt-4">
+        <!--ユーザー側-->
+        <% if end_user_signed_in? %>
           <li class="nav-item mt-2 mx-3">
             <%= render 'layouts/search_form'%>
           </li>
@@ -43,11 +42,8 @@
               </div>
             <% end %>
           </li>
-        </ul>
-      <!--管理者側-->
-      <% elsif admin_signed_in? %>
-        <!--タブ-->
-        <ul class="navbar-nav ml-auto mt-4">
+        <!--管理者側-->
+        <% elsif admin_signed_in? %>
           <li class="nav-item mt-2 mx-3">
             <%= render 'layouts/search_form'%>
           </li>
@@ -65,10 +61,8 @@
               </div>
             <% end %>
           </li>
-        </ul>
-      <!--ログイン前-->
-      <% else %>
-        <ul class="navbar-nav ml-auto mt-4">
+        <!--ログイン前-->
+        <% else %>
           <li class="nav-item">
             <%= link_to about_path, class: 'btn btn-secondary rounded-pill my-1' do %>
               <div class="flex-colum mx-3 text_center">
@@ -97,8 +91,8 @@
               </div>
             <% end %>
           </li>
-        </ul>
-      <% end %>
+        <% end %>
+      </ul>
     </div>
     
     <!--ハンバーガーメニュー-->
@@ -110,38 +104,87 @@
     
     <div id="hm-menu">
       <ul>
+        <!--ユーザー側-->
         <% if end_user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "記録を書く", new_document_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= render 'layouts/search_form'%>
           </li>
           <li class="nav-item">
-            <%= link_to "記録を見る", documents_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= link_to new_document_path, class: 'btn btn-secondary rounded-pill my-3' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-pen-nib"></i> 記録を書く
+              </div>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "マイページ", end_user_path(current_end_user), class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= link_to documents_path, class: 'btn btn-secondary rounded-pill' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-book-open"></i> 記録を見る
+              </div>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= link_to end_user_path(current_end_user), class: 'btn btn-secondary rounded-pill my-3' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-user"></i> マイページ
+              </div>
+            <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to destroy_end_user_session_path, method: :delete, class: 'btn btn-secondary rounded-pill' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              </div>
+            <% end %>
+          </li>
+        <!--管理者側-->
         <% elsif admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "ユーザー", admin_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= render 'layouts/search_form'%>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= link_to admin_path, class: 'btn btn-secondary rounded-pill my-3' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-users"></i> ユーザー
+              </div>
+            <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-secondary rounded-pill' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              </div>
+            <% end %>
+          </li>
+        <!--ログイン前-->
         <% else %>
           <li class="nav-item">
-            <%= link_to "ABOUT", about_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= link_to about_path, class: 'btn btn-secondary rounded-pill my-3' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-question-circle"></i> ABOUT
+              </div>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "新規登録", new_end_user_registration_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= link_to new_end_user_registration_path, class: 'btn btn-secondary rounded-pill' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-user-plus"></i> 新規登録
+              </div>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログイン", new_end_user_session_path, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= link_to new_end_user_session_path, class: 'btn btn-secondary rounded-pill my-3' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              </div>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "ゲストログイン", end_users_guest_sign_in_path, method: :post, class: 'btn btn-secondary rounded-pill mx-3 my-1' %>
+            <%= link_to end_users_guest_sign_in_path, method: :post, class: 'btn btn-secondary rounded-pill' do %>
+              <div class="flex-colum mx-3 text_center">
+                <i class="fas fa-user-check"></i> ゲストログイン
+              </div>
+            <% end %>
           </li>
         <% end %>
       </ul>

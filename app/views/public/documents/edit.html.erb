@@ -4,11 +4,21 @@
       <h2 class="font-weight-bold">
         <%= l @document.created_at, format: :long %>の記録を編集
       </h2>
+      
+      <!--登録されているタグ一覧-->
+      <div class="text-left mt-4 mb-5 col-8 offset-2">
+        <% @tags.each do |list| %>
+          <a class="btn btn-outline-dark btn-sm rounded-pill disabled mb-2"
+                tabindex="-1" role="button" aria-disabled="true">
+            <i class="fas fa-tag"></i> <%= list.name %>
+          </a>
+        <% end %>
+      </div>
 
       <%= form_with model: @document do |f| %>
         <!--タグ投稿フォーム-->
         <div class="form-group text-left mt-3 mb-5 col-8 offset-2">
-          <%= f.label :tag_name, "タグをつけてください" %><br>
+          <%= f.label :tag_name, "既存、または新しいタグをつけてください" %><br>
           <%= f.text_field :tag_name, autofocus: true, value: @tag_list, class: "form-control form-control-sm" %>
         </div>
         <!--感情ステータスを選択-->

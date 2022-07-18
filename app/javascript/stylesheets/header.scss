@@ -1,23 +1,19 @@
-#hm-icon{
+#hm-menu{
   position:fixed;
   z-index: 999;
   top:0;
   left: -120%;
-  width: 50%;
+  width: 300px;
   height: 100vh;
-  background:#999;
+  background:#999; // メニュー背景
   transition: all 0.6s;
 }
 
-
-#hm-icon.panelactive{
-    left: 0;
+#hm-menu.panelactive{
+  left: 0;
 }
 
-
-
-#hm-icon.panelactive #g-nav-list{
-  
+#hm-menu.panelactive #g-nav-list{
   position: fixed;
   z-index: 999;
   width: 50%;
@@ -26,32 +22,25 @@
   -webkit-overflow-scrolling: touch;
 }
 
-
-#hm-icon ul {
+#hm-menu ul {
   position: absolute;
   z-index: 999;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  padding-inline-start: 1%;
 }
 
-
-
-#hm-icon li{
+#hm-menu li{
   list-style: none;
   text-align: center;
 }
 
-#hm-icon li a{
-  color: #333;
+#hm-menu li a{
   text-decoration: none;
-  padding: 5px;
-  display: block;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-weight: bold;
 }
-
 
 .hm-icon{
   position: fixed;
@@ -62,7 +51,6 @@
   width: 50px;
   height: 50px;
 }
-
 
 .hm-icon span{
   display: inline-block;

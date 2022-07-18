@@ -3,10 +3,20 @@
     <div class="col-8 offset-2 text-center">
       <h2 class="font-weight-bold">記録を書く</h2>
 
+      <!--登録されているタグ一覧-->
+      <div class="text-left mt-4 mb-5 col-8 offset-2">
+        <% @tags.each do |list| %>
+          <a class="btn btn-outline-dark btn-sm rounded-pill disabled mb-2"
+                tabindex="-1" role="button" aria-disabled="true">
+            <i class="fas fa-tag"></i> <%= list.name %>
+          </a>
+        <% end %>
+      </div>
+
       <%= form_with model: @document_new do |f| %>
         <!--タグ投稿フォーム-->
-        <div class="form-group text-left mt-3 mb-5 col-8 offset-2">
-          <%= f.label :tag_name, "タグをつけてください" %><br>
+        <div class="form-group text-left mb-5 col-8 offset-2">
+          <%= f.label :tag_name, "既存、または新しいタグをつけてください" %><br>
           <%= f.text_field :tag_name, autofocus: true, placeholder: "複数つける場合は,で区切ってください",
               class: "form-control form-control-sm" %>
         </div>

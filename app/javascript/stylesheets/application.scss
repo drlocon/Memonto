@@ -112,3 +112,12 @@ footer {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%); 
 }
+
+
+@media screen and (max-width: 1000px) {
+  
+.hm-icon #hm-menu {
+  display: none;
+}
+
+}
