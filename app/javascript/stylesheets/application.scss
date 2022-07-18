@@ -32,6 +32,10 @@ header{
   line-height: 80px;
 }
 
+.hm-icon {
+  display: none;
+}
+
 // footer
 footer {
   margin-top: auto;
@@ -72,6 +76,7 @@ footer {
 .feeling_icon {
   font-size: 35pt;
   margin: 0 20px;
+  color: #543d46;
 }
 
 .feeling_icon:hover {
@@ -110,14 +115,31 @@ footer {
   text-align: center;
   top: 50%;
   -webkit-transform: translateY(-50%);
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
+}
+
+// pagination
+.pagination>li>a {
+  border: none;   //枠線消去
+  color: #696969; // 文字色
+}
+
+// 表示しているページ番号のデザイン
+.pagination>.active>a {
+  background: #ff002b; // 背景色
+  border-radius: 50%;  //角丸
+}
+
+// ホバー時のデザイン
+.pagination>li>a:hover {
+  border-radius: 50%; //角丸
 }
 
 
+
+// 1000px以下の画面設定
 @media screen and (max-width: 1000px) {
-  
-.hm-icon #hm-menu {
-  display: none;
+  .hm-icon {
+  display: block;
 }
-
 }
