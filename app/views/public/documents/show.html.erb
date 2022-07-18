@@ -60,5 +60,9 @@
             class: "btn btn-outline-danger btn-sm rounded-pill w-50 mt-1 destroy_document_#{@document.id}" %>
       </div>
     </div>
+    <!--一覧へ戻る-->
+    <div class="col-6 offset-3 text-center mb-3">
+      <%= link_to '一覧へ戻る', documents_path, class: "back" %>
+    </div>
   </div>
 </div>

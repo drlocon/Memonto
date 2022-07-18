@@ -119,9 +119,11 @@ footer {
 }
 
 // pagination
+// ページネーション
 .pagination>li>a {
   border: none;   //枠線消去
   color: #696969; // 文字色
+  text-align: center;
 }
 
 // 表示しているページ番号のデザイン
@@ -140,6 +142,12 @@ footer {
 // 1000px以下の画面設定
 @media screen and (max-width: 1000px) {
   .hm-icon {
-  display: block;
-}
+    display: block;
+  }
+  
+  .img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }

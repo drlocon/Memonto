@@ -16,7 +16,7 @@
       <%= form_with model: @document_new do |f| %>
         <!--タグ投稿フォーム-->
         <div class="form-group text-left mb-5 col-8 offset-2">
-          <%= f.label :tag_name, "既存、または新しいタグをつけてください" %><br>
+          <%= f.label :tag_name, "上記のタグ、または新しいタグをつけてください" %><br>
           <%= f.text_field :tag_name, autofocus: true, placeholder: "複数つける場合は,で区切ってください",
               class: "form-control form-control-sm" %>
         </div>
