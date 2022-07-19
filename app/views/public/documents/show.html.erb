@@ -52,17 +52,14 @@
         </div>
       </div>
     </div>
-    <!--ボタン-->
+    <!--選択ボタン-->
     <div class="col-10 offset-1 text-center">
       <div class="form-group mb-5">
-        <%= link_to '編集', edit_document_path(@document), class: "btn btn-outline-success btn-sm rounded-pill w-50 mt-1" %>
+        <%= link_to '編集', edit_document_path(@document),
+            class: "btn btn-outline-success btn-sm rounded-pill w-50 mt-1 mb-3" %>
         <%= link_to '削除', @document, method: :delete, data: { confirm: '本当に削除しますか？' },
-            class: "btn btn-outline-danger btn-sm rounded-pill w-50 mt-1 destroy_document_#{@document.id}" %>
+            class: "btn btn-outline-danger btn-sm rounded-pill w-50 destroy_document_#{@document.id}" %>
       </div>
-    </div>
-    <!--一覧へ戻る-->
-    <div class="col-6 offset-3 text-center mb-3">
-      <%= link_to '一覧へ戻る', documents_path, class: "back" %>
     </div>
   </div>
 </div>
