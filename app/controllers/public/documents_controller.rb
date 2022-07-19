@@ -1,7 +1,7 @@
 class Public::DocumentsController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  before_action :set_tags, only: [:new, :index, :edit]
+  before_action :set_tags, only: [:new, :create, :index, :edit]
 
   def new
     @document_new = Document.new
@@ -17,7 +17,7 @@ class Public::DocumentsController < ApplicationController
       redirect_to documents_path
     else
       @document_new = Document.new
-      flash[:alert] = "入力に誤りがあります"
+      flash[:alert] = "記録の詳細が入力されていないようです"
       render :new
     end
   end
@@ -40,14 +40,14 @@ class Public::DocumentsController < ApplicationController
       flash[:notice] = "編集内容を保存しました"
       redirect_to document_path(params[:id])
     else
-      flash[:alert] = "入力に誤りがあります"
+      flash[:alert] = "記録の詳細が入力されていないようです"
       render :edit
     end
   end
 
   def destroy
     @document.destroy
-    flash[:notice] = "削除しました"
+    flash[:notice] = "記録を削除しました"
     redirect_to documents_path
   end
 
@@ -71,15 +71,12 @@ class Public::DocumentsController < ApplicationController
   end
   
   def set_tags
-    # ログイン中のユーザーのみのタグリストを取り出す
-    # documentsのtagsを取り出すため、each文を利用して配列に入れる
     arr = []
     current_end_user.documents.each do  |doc|
       doc.tags.each do |tag|
         arr.push(tag.id)
       end
     end
-    # 取り出した配列からdistinctを使って重複を除く
     @tags = Tag.where(id: arr).distinct
   end
 end

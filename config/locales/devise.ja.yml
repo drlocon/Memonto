@@ -141,4 +141,3 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件の項目が満たされておりません。"
-        

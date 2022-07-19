@@ -12,11 +12,12 @@
         <!--名前-->
         <div class="form-group text-left mt-3 col-8 offset-2">
           <%= f.label :name %></br>
-          <%= f.text_field :name, autofocus: true, id:"inputName", class: "form-control form-control-sm" %>
+          <%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "20文字以内",
+              class: "form-control form-control-sm" %>
         </div>
         <!--ボタン-->
         <div class="form-group mb-5">
-          <%= f.submit "編集内容を保存", class: 'btn btn-outline-info rounded-pill w-50 mt-1' %>
+          <%= f.submit "編集内容を保存", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
         </div>
         
         <div class="col-6 offset-3 text-center mb-3">

@@ -7,12 +7,14 @@
         <!--メールアドレス-->
         <div class="form-group text-left mt-3 col-8 offset-2">
           <%= f.label :email %><br>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス",
+              class: "form-control form-control-sm" %>
         </div>
         <!--パスワード-->
         <div class="form-group text-left mt-3 col-8 offset-2">
           <%= f.label :password %><br>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-sm" %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "6文字以上の半角英数字",
+              class: "form-control form-control-sm" %>
         </div>
         <!--ボタン-->
         <div class="actions">

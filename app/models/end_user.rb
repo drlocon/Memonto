@@ -27,6 +27,9 @@ class EndUser < ApplicationRecord
   has_many :documents, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  # バリデーションの設定
+  validates :name, presence: true, length: { minimum: 1, maximum: 20 }
+  
   # プロフィール画像の設定
   has_one_attached :profile_image
   

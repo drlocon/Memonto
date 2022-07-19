@@ -13,13 +13,13 @@ class Admin::EndUsersController < ApplicationController
       flash[:notice] = "ユーザー情報が更新されました"
       redirect_to admin_end_user_path(@end_user)
     else
-      flash[:alert] = "ユーザー情報を更新できませんできた"
+      flash[:alert] = "ユーザー情報を更新できませんでした"
       render :edit
     end
   end
 
   def word_search
-    @end_users_search = EndUser.word_search(params[:keyword]).page(params[:page]).per(8)
+    @end_users_search = EndUser.word_search(params[:keyword]).page(params[:page]).per(12)
   end
   
   private
