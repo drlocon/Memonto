@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-6 offset-3 text-center">
       <h2 class="font-weight-bold">ログイン</h2>
-
       <%= form_with model: @end_user, url: end_user_session_path do |f| %>
         <!--メールアドレス-->
         <div class="form-group text-left mt-3 col-8 offset-2">
@@ -21,14 +20,13 @@
           <%= f.submit "ログイン", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
         </div>
       <% end %>
-      
+      <!--未登録ユーザーへの案内-->
       <div class="row text-center mt-4">
         <div class="col-12 col-md-10 offset-md-1 py-4">
           <h4 class="font-weight-bold">ユーザー登録がお済みでない方</h4>
           <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
         </div>
       </div>
-
     </div>
   </div>
 </div>

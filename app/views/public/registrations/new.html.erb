@@ -6,7 +6,7 @@
         ゲストログインすることで<br>
         新規登録せずにお試しでサービスを使うことができます。
       </p>
-
+      <!--入力フォーム-->
       <%= form_with model: @end_user, url: end_user_registration_path do |f| %>
         <!--メッセージ-->
         <%= render "public/shared/error_messages", resource: resource %>
@@ -42,14 +42,13 @@
       <!--ゲストログイン-->
       <%= link_to "ゲストログイン", end_users_guest_sign_in_path, method: :post,
           class: "btn btn-outline-info rounded-pill w-50 mt-3" %>
-
+      <!--登録済みユーザーへの案内-->
       <div class="row text-center mt-4">
         <div class="col-12 col-md-10 offset-md-1 py-4">
           <h4 class="font-weight-bold">ユーザー登録がお済みの方</h4>
           <p><%= render "public/shared/links" %>からログインしてください。</p>
         </div>
       </div>
-
     </div>
   </div>
 </div>
