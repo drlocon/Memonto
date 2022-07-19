@@ -17,7 +17,9 @@
         </div>
         <!--ボタン-->
         <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
+          <%= button_tag :type => "submit", :class =>"btn btn-outline-primary rounded-pill w-50 mt-1" do %>
+            <i class="fas fa-sign-in-alt"></i> ログイン
+          <% end %>
         </div>
       <% end %>
       <!--未登録ユーザーへの案内-->

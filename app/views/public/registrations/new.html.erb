@@ -37,12 +37,17 @@
         </div>
         <!--登録ボタン-->
         <div class="actions">
-          <%= f.submit "新規登録", class: "btn btn-outline-success rounded-pill w-50 mt-1" %>
+          <%= button_tag :type => "submit", :class =>"btn btn-outline-success rounded-pill w-50 mt-1" do %>
+            <i class="fas fa-user-plus"></i> 新規登録
+          <% end %>
         </div>
       <% end %>
       <!--ゲストログイン-->
-      <%= link_to "ゲストログイン", end_users_guest_sign_in_path, method: :post,
-          class: "btn btn-outline-info rounded-pill w-50 mt-3" %>
+      <%= link_to end_users_guest_sign_in_path, method: :post, class: "btn btn-outline-primary rounded-pill w-50 mt-3" do %>
+        <div class="flex-colum mx-3 text_center">
+          <i class="fas fa-user-check"></i> ゲストログイン
+        </div>
+      <% end %>
       <!--登録済みユーザーへの案内-->
       <div class="row text-center mt-4">
         <div class="col-12 col-md-10 offset-md-1 py-4">
