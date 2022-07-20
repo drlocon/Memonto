@@ -3,51 +3,19 @@
     <div class="col-6 offset-3 text-center">
       <h2 class="font-weight-bold">お気に入り一覧</h2>
     </div>
+    <!--お気に入り数-->
     <div class="col-10 offset-1 text-center mt-3 mb-5">
       <p><%= @favorites.count %>件の記録がお気に入りに登録されています。</p>
     </div>
-
+    <!--記録の一覧-->
     <div class="col-10 offset-1 text-left">
       <% if @favorite_list.present? %>
-        <% @favorite_list.each do |document| %>
-          <%= link_to document_path(document) do %>
-            <div class="card  mb-3">
-              <!--card header-->
-              <div class="card-header", style="color:#727068; background-color:#f2f0ec">
-                <div class="d-flex bd-highlight">
-                  <!--登録日-->
-                  <div class="p-2 w-100 bd-highlight">
-                    <%= l document.created_at, format: :long %>
-                  </div>
-                  <!--お気に入り-->
-                  <div class="ml-auto p-2 bd-highlight">
-                    <div class=<%= "favorite-" + document.id.to_s %>>
-                      <%= render 'public/favorites/btn', document: document %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--card body-->
-              <div class="card-body", style="color:#4b4841; background-color:#ffffff">
-                <!--記録内容-->
-                <p class="card-text"><%= document.content.truncate(57) %></p>
-                <!--タグ-->
-                <% document.tags.each do |tag| %>
-                  <a class="btn btn-outline-dark btn-sm rounded-pill disabled" 
-                      tabindex="-1" role="button" aria-disabled="true">
-                    <i class="fas fa-tag"></i> <%= tag.name %>
-                  </a>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+        <%= render "public/documents/document_card", documents: @favorite_list %>
       <% end %> 
     </div>
     <!--ページネーション-->
-    <div class="col-6 offset-5 text-center">
+    <div class="col-5 offset-5 text-center">
       <%= paginate @favorite_list %>
     </div>
-
   </div>
 </div>

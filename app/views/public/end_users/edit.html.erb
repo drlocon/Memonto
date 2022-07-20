@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-6 offset-3 text-center">
       <h2 class="font-weight-bold">ユーザー情報の編集</h2>
-
       <%= form_with model: @end_user do |f| %>
         <!--画像-->
         <div class="form-group text-left mt-3 col-8 offset-2">
@@ -12,15 +11,18 @@
         <!--名前-->
         <div class="form-group text-left mt-3 col-8 offset-2">
           <%= f.label :name %></br>
-          <%= f.text_field :name, autofocus: true, id:"inputName", class: "form-control form-control-sm" %>
+          <%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "20文字以内",
+              class: "form-control form-control-sm" %>
         </div>
         <!--ボタン-->
         <div class="form-group mb-5">
-          <%= f.submit "編集内容を保存", class: 'btn btn-outline-info rounded-pill w-50 mt-1' %>
+          <%= f.submit "編集内容を保存", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
         </div>
-        
-        <div class="col-6 offset-3 text-center mb-3">
-          <%= link_to 'マイページへ戻る', @end_user, class: "end_user_#{@end_user.id}" %>
+      <% end %>
+      <!--戻るボタン-->
+      <%= link_to @end_user, class: "end_user_#{@end_user.id}" do %>
+        <div class="flex-colum mx-3 text_center">
+          <i class="fas fa-arrow-circle-left"></i> マイページへ戻る
         </div>
       <% end %>
     </div>
