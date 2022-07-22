@@ -32,9 +32,9 @@ class Public::EndUsersController < ApplicationController
   end
 
   def favorites
-    @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
-    @favorite_list = Document.find(@favorites)
-    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page])
+    @favorites = current_end_user.favorites.pluck(:document_id)
+    favorite_list = Document.find(@favorites)
+    @favorite_list = Kaminari.paginate_array(favorite_list).page(params[:page])
   end
 
   private
