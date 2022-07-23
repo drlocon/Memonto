@@ -32,22 +32,22 @@ class Document < ApplicationRecord
   scope :created_6day_ago, -> { where(created_at: 6.day.ago.all_day) }
 
   scope :current_happy, -> { where(feeling: 0, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
-  scope :current_angry, -> { where(feeling:1, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
-  scope :current_sorrow, -> { where(feeling:2, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
-  scope :current_normal, -> { where(feeling:3, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
-  scope :current_tired, -> { where(feeling:4, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
+  scope :current_angry, -> { where(feeling: 1, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
+  scope :current_sorrow, -> { where(feeling: 2, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
+  scope :current_normal, -> { where(feeling: 3, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
+  scope :current_tired, -> { where(feeling: 4, created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
 
   # タグ機能の設定
   def save_tags(savedocument_tags)
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    current_tags = tags.pluck(:name) unless tags.nil?
     old_tags = current_tags - savedocument_tags
     new_tags = savedocument_tags - current_tags
     old_tags.each do |old_name|
-      self.tags.delete Tag.find_by(name:old_name)
+      tags.delete Tag.find_by(name: old_name)
     end
     new_tags.each do |new_name|
-      document_tag = Tag.find_or_create_by(name:new_name)
-      self.tags << document_tag
+      document_tag = Tag.find_or_create_by(name: new_name)
+      tags << document_tag
     end
   end
 

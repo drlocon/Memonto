@@ -23,16 +23,16 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :documents, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   # バリデーションの設定
   validates :name, presence: true, length: { minimum: 1, maximum: 20 }
-  
+
   # プロフィール画像の設定
   has_one_attached :profile_image
-  
+
   # プロフィール画像(デフォルト)の設定
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -41,20 +41,20 @@ class EndUser < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   # ゲストログインの設定
   def self.guest
-    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+    find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
   end
-  
+
   # 退会機能の設定
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   # キーワード検索の設定
   def self.word_search(search)
     if search != ""
