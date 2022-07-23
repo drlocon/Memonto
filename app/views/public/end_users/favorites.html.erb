@@ -5,7 +5,7 @@
     </div>
     <!--お気に入り数-->
     <div class="col-10 offset-1 text-center mt-3 mb-5">
-      <p><%= @favorites.count %>件の記録がお気に入りに登録されています。</p>
+      <p><%= @favorites.count %>件の記録がお気に入り登録されています。</p>
     </div>
     <!--記録の一覧-->
     <div class="col-10 offset-1 text-left">
@@ -14,7 +14,7 @@
       <% end %> 
     </div>
     <!--ページネーション-->
-    <div class="col-5 offset-5 text-center">
+    <div class="col-6 offset-3 justify-content-center mt-3 mb-5 d-flex">
       <%= paginate @favorite_list %>
     </div>
   </div>

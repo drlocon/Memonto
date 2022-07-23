@@ -69,7 +69,7 @@ class Public::DocumentsController < ApplicationController
   def set_document
     @document = current_end_user.documents.find(params[:id])
   end
-  
+
   def set_tags
     arr = []
     current_end_user.documents.each do  |doc|

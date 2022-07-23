@@ -3,7 +3,7 @@
 
 <img src="https://img.shields.io/badge/Ruby-v2.6.3-cc0000"> <img src="https://img.shields.io/badge/Rails-v6.1.6-cc0000">
 
-(URL記載予定)
+<br>
 
 ## 概要
 その瞬間に感動したこと、SNSに投稿するほどでもない小さなことなどの情報を<br>
@@ -37,8 +37,8 @@
 
 ### :notebook_with_decorative_cover:開発環境
 - OS：Linux(CentOS)
-- 言語：HTML, CSS, JavaScript, Ruby (2.6.3), SQL
-- フレームワーク：Ruby on Rails (6.1.6)
+- 言語：HTML, CSS, JavaScript, Ruby, SQL
+- フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
