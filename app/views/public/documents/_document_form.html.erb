@@ -10,28 +10,63 @@
     <p>今の気持ちを選びましょう</p>
     <!--感情：happy-->
     <%= f.radio_button :feeling, :happy, class: "hidden_radio" %>
-    <%= f.label :feeling, class: 'feeling_icon check_radio', for: "document_feeling_happy" do %>
-      <i class="radio_icon fas fa-grin"></i>
+    <!--登録されている感情かを判定、していなければチェックしない-->
+    <% if document.feeling == "happy" %>
+      <%= f.label :feeling, class: 'feeling_icon check_radio', for: "document_feeling_happy" do %>
+        <i class="radio_icon fas fa-grin"></i>
+      <% end %>
+    <% else %>
+      <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_happy" do %>
+        <i class="radio_icon fas fa-grin"></i>
+      <% end %>
     <% end %>
     <!--感情：anger-->
     <%= f.radio_button :feeling, :anger, class: "hidden_radio" %>
-    <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_anger" do %>
-      <i class="fas fa-angry"></i>
+    <!--登録されている感情かを判定、していなければチェックしない-->
+    <% if document.feeling == "anger" %>
+      <%= f.label :feeling, class: 'feeling_icon check_radio', for: "document_feeling_anger" do %>
+        <i class="fas fa-angry"></i>
+      <% end %>
+    <% else %>
+      <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_anger" do %>
+        <i class="fas fa-angry"></i>
+      <% end %>
     <% end %>
     <!--感情：normal-->
     <%= f.radio_button :feeling, :normal, class: "hidden_radio" %>
-    <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_normal" do %>
-      <i class="fas fa-meh"></i>
+    <!--登録されている感情かを判定、していなければチェックしない-->
+    <% if document.feeling == "normal" %>
+      <%= f.label :feeling, class: 'feeling_icon check_radio', for: "document_feeling_normal" do %>
+        <i class="fas fa-meh"></i>
+      <% end %>
+    <% else %>
+      <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_normal" do %>
+        <i class="fas fa-meh"></i>
+      <% end %>
     <% end %>
     <!--感情：sorrow-->
     <%= f.radio_button :feeling, :sorrow, class: "hidden_radio" %>
-    <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_sorrow" do %>
-      <i class="fas fa-sad-tear"></i>
+    <!--登録されている感情かを判定、していなければチェックしない-->
+    <% if document.feeling == "sorrow" %>
+      <%= f.label :feeling, class: 'feeling_icon check_radio', for: "document_feeling_sorrow" do %>
+        <i class="fas fa-sad-tear"></i>
+      <% end %>
+    <% else %>
+      <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_sorrow" do %>
+        <i class="fas fa-sad-tear"></i>
+      <% end %>
     <% end %>
     <!--感情：tired-->
     <%= f.radio_button :feeling, :tired, class: "hidden_radio" %>
-    <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_tired" do %>
-      <i class="fas fa-tired"></i>
+    <!--登録されている感情かを判定、していなければチェックしない-->
+    <% if document.feeling == "tired" %>
+      <%= f.label :feeling, class: 'feeling_icon check_radio', for: "document_feeling_tired" do %>
+        <i class="fas fa-tired"></i>
+      <% end %>
+    <% else %>
+      <%= f.label :feeling, class: 'feeling_icon', for: "document_feeling_tired" do %>
+        <i class="fas fa-tired"></i>
+      <% end %>
     <% end %>
   </div>
   <!--記録投稿フォーム-->
@@ -41,6 +76,6 @@
   </div>
   <!--ボタン-->
   <div class="form-group mt-5 mb-5">
-    <%= f.submit "記録する", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
+    <%= f.submit "更新する", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
   </div>
 <% end %>

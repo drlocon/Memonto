@@ -146,7 +146,7 @@ footer {
   left: 0;
   right: 0;
   text-align: center;
-  top: 73%;
+  top: 45%;
 }
 
 // pagination
@@ -164,7 +164,7 @@ footer {
 
 // ホバー時のデザイン
 .pagination>li>a:hover {
-  background: eaf7fc;
+  background: #eaf7fc;
   border-radius: 50%;
 }
 
@@ -180,5 +180,25 @@ footer {
     width: 100%;
     max-width: 100%;
     height: auto;
+  }
+  
+  .chart-line {
+    position: relative;
+    width: 350px;
+    height: 200px;
+  }
+  
+  .chart-doughnut {
+    position: relative;
+    width: 250px;
+    height: 250px;
+  }
+  
+  .chart-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 43%;
   }
 }
