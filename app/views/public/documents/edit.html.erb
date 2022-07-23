@@ -14,7 +14,7 @@
         <% end %>
       </div>
       <!--入力フォーム-->
-      <%= render "public/documents/document_form", document: @document, tag_list: @tag_list %>
+      <%= render "public/documents/document_editform", document: @document, tag_list: @tag_list %>
       <!--戻るボタン-->
       <div class="col-6 offset-3 text-center mb-3">
         <%= link_to @document, class: "document_#{@document.id}" do %>
