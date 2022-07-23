@@ -51,6 +51,7 @@
 - pry-rails
 - better_errors
 - binding_of_caller
+- Rubocop
 <br>
 
 ## 機能一覧
