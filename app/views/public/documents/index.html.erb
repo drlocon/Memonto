@@ -18,8 +18,8 @@
       <%= render "public/documents/document_card", documents: @documents %>
     </div>
     <!--ページネーション-->
-    <p class="col-5 text-center mt-5 mb-5">
+    <div class="col-6 offset-3 justify-content-center mt-3 mb-5 d-flex">
       <%= paginate @documents %>
-    </p>
+    </div>
   </div>
 </div>

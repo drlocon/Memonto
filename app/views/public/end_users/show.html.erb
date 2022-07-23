@@ -4,7 +4,7 @@
     <div class="col-2 text-center">
       <h2 class="font-weight-bold mb-3">マイページ</h2>
       <!--プロフィール画像-->
-      <%= image_tag @end_user.get_profile_image(150,150), class: "rounded-circle" %>
+      <%= image_tag @end_user.get_profile_image(150,150), class: "rounded-circle img" %>
       <!--ユーザー名-->
       <p><%= @end_user.name %></p>
       <!--お気に入り-->
@@ -31,7 +31,7 @@
     <!--ページの右側-->
     <div class="col-10 text-center mb-1">
       <!--投稿の統計-->
-      <h3 class="mb-2 mb-5">
+      <h3 class="mb-4">
         1ヶ月間の投稿数は
         <%= current_end_user.documents.where('created_at > ?', Date.today.month).count %>件、
         今までの投稿数は
@@ -39,12 +39,12 @@
       </h3>
       <!--投稿数のグラフ-->
       <div class="d-flex justify-content-center mb-5">
-        <div style="position:relative;width:500px;height:300px;">
+        <div class="chart-line">
           <%= render 'public/end_users/line_chart', documents: @documents %>
         </div>
       </div>
-      <!--感情の統計-->
-      <h3 class="mb-3">1ヶ月間の感情の統計です</h3>
+      <!--感情数のグラフ-->
+      <h3 class="mb-3">あなたが選択した感情の比率を確認しましょう</h3>
       <!--感情アイコン一覧-->
       <a class="mr-2"><i class="fas fa-grin fa-2x" style="color: #f6c90e"></i></a>
       <a class="mr-2"><i class="fas fa-angry fa-2x" style="color: #f47c7c"></i></a>
@@ -53,7 +53,7 @@
       <a class="mr-2"><i class="fas fa-tired fa-2x" style="color: #aa96da"></i></a>
       <!--感情のグラフ-->
       <div class="d-flex justify-content-center mt-1 mb-4">
-        <div style="position:relative;width:450px;height:450px;">
+        <div ="chart-doughnut">
           <%= render 'public/end_users/doughnut_chart', documents: @documents %>
         </div>
       </div>

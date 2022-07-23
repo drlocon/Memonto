@@ -9,8 +9,8 @@
       <%= render "admin/end_users/end_user_card", end_users: @end_users_search %>
     </div>
     <!--ページネーション-->
-    <p class="col-5 text-center mt-3 mb-5">
+    <div class="col-6 offset-3 justify-content-center mt-3 mb-5 d-flex">
       <%= paginate @end_users_search %>
-    </p>
+    </div>
   </div>
 </div>

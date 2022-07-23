@@ -129,21 +129,24 @@ footer {
 }
 
 // chart
-.chart_price {
+.chart-line {
   position: relative;
+  width: 500px;
+  height: 300px;
 }
 
-.chart_title {
+.chart-doughnut {
+  position: relative;
+  width: 450px;
+  height: 450px;
+}
+
+.chart-title {
   position: absolute;
-  top: 0;
   left: 0;
-  margin: auto;
   right: 0;
-  margin: auto;
   text-align: center;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  top: 73%;
 }
 
 // pagination
