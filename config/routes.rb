@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   # devise/adminサイド
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: 'admin/sessions'
+    sessions: 'admin/sessions',
   }
-  
+
   # devise/publicサイド
   devise_for :end_users, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
-    sessions: 'public/sessions'
+    sessions: 'public/sessions',
   }
-  
+
   # ゲストログイン
   devise_scope :end_user do
     post 'end_users/guest_sign_in', to: 'public/sessions#guest_sign_in'
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
 
-    resources :end_users, only:[:show, :edit, :update] do
+    resources :end_users, only: [:show, :edit, :update] do
       collection do
         get 'word_search' => 'end_users#word_search'
       end

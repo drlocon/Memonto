@@ -72,7 +72,7 @@ class Public::DocumentsController < ApplicationController
 
   def set_tags
     arr = []
-    current_end_user.documents.each do  |doc|
+    current_end_user.documents.each do |doc|
       doc.tags.each do |tag|
         arr.push(tag.id)
       end

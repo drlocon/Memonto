@@ -17,7 +17,7 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  
+
   # ゲストログイン機能
   def guest_sign_in
     user = EndUser.guest
@@ -25,7 +25,7 @@ class Public::SessionsController < Devise::SessionsController
     flash[:notice] = "ゲストユーザーでログインしました"
     redirect_to root_path
   end
-  
+
   protected
 
   # ログイン後のパスを指定
@@ -37,7 +37,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
-  
+
   # 退会機能
   def end_user_state
     @end_user = EndUser.find_by(email: params[:end_user][:email])
