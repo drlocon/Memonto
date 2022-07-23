@@ -11,7 +11,7 @@
 class TagDocument < ApplicationRecord
   belongs_to :document
   belongs_to :tag
-  
+
   # バリデーションの設定
   validates :document_id, presence: true
   validates :tag_id, presence: true

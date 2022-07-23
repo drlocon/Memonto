@@ -54,7 +54,7 @@ class Public::EndUsersController < ApplicationController
       redirect_to end_user_path(current_end_user)
     end
   end
-  
+
   def check_guest_user
     @end_user = EndUser.find(params[:end_user_id])
     if @end_user.name == "guestuser"
