@@ -20,3 +20,13 @@ Turbolinks.start()
 ActiveStorage.start()
 
 global.Chart = Chart;
+
+document.addEventListener("turbolinks:load", function(){
+  let radio_btns = document.querySelectorAll(`input[type='radio'][class='hidden_radio']`);
+  for (let target of radio_btns) {
+    target.addEventListener(`change`, () => {
+      document.querySelector('.check_radio').classList.remove('check_radio');
+      document.querySelector(`label[for='${target.id}']`).classList.add('check_radio');
+    });
+  }
+})

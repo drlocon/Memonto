@@ -1,7 +1,7 @@
 <!--管理者側の検索フォーム-->
 <% if admin_signed_in? %>
   <%= form_with url: word_search_admin_end_users_path, local: true, method: :get do |f| %>
-    <%= f.text_field :keyword, placeholder: "Search" %>
+    <%= f.text_field :keyword, placeholder: "キーワードを入力" %>
     <%= button_tag :type => "submit", :class =>"btn btn-secondary btn-sm mb-1" do %>
       <i class="fas fa-search"></i>
     <% end %>
@@ -9,7 +9,7 @@
 <!--ユーザー側の検索フォーム-->  
 <% else %>
   <%= form_with url: word_search_documents_path, local: true, method: :get do |f| %>
-    <%= f.text_field :keyword, placeholder: "Search" %>
+    <%= f.text_field :keyword, placeholder: "キーワードを入力" %>
     <%= button_tag :type => "submit", :class =>"btn btn-secondary btn-sm mb-1" do %>
       <i class="fas fa-search"></i>
     <% end %>

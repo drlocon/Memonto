@@ -19,6 +19,9 @@ module Memonto
     
     # タイムゾーンを変更
     config.time_zone = 'Tokyo'
+    
+    # field_with_errorsクラスのdivを自動挿入されないようにする
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
 
 
     # Configuration for the application, engines, and railties goes here.

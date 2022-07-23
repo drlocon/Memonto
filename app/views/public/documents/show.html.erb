@@ -15,10 +15,6 @@
             <div class="p-2 w-100 bd-highlight">
               <%= l @document.created_at, format: :long %>
             </div>
-            <!--感情ステータス-->
-            <div class="p-2 w-100 bd-highlight">
-              感情：<%= @document.feeling_i18n %>
-            </div>
             <!--お気に入り-->
             <div class="ml-auto p-2 bd-highlight">
               <div class=<%= "favorite-" + @document.id.to_s %>>
@@ -30,10 +26,25 @@
         <!--card body-->
         <div class="card-body", style="color:#4b4841; background-color:#ffffff">
           <!--記録内容-->
-          <p class="card-text"><%= @document.content %></p>
+          <p class="card-text">
+            <!--感情ステータス-->
+            <% if @document.feeling == "happy" %>
+              <i class="fas fa-grin fa-lg" style="color: #f6c90e"></i>
+            <% elsif @document.feeling == "anger" %>
+              <i class="fas fa-angry fa-lg" style="color: #f47c7c"></i>
+            <% elsif @document.feeling == "sorrow" %>
+              <i class="fas fa-sad-tear fa-lg" style="color: #70a1d7"></i>
+            <% elsif @document.feeling == "normal" %>
+              <i class="fas fa-meh fa-lg" style="color: #a1de93"></i>
+            <% elsif @document.feeling == "tired" %>
+              <i class="fas fa-tired fa-lg" style="color: #aa96da"></i>
+            <% end %>
+            <!--文章-->
+            <%= @document.content %>
+          </p>
           <!--タグ-->
           <% @document.tags.each do |tag| %>
-            <a class="btn btn-outline-dark btn-sm rounded-pill disabled" 
+            <a class="btn btn-outline-dark btn-sm rounded-pill disabled"
                 tabindex="-1" role="button" aria-disabled="true">
               <i class="fas fa-tag"></i> <%= tag.name %>
             </a>
@@ -41,12 +52,13 @@
         </div>
       </div>
     </div>
-    <!--ボタン-->
+    <!--選択ボタン-->
     <div class="col-10 offset-1 text-center">
       <div class="form-group mb-5">
-        <%= link_to '編集', edit_document_path(@document), class: "btn btn-outline-success btn-sm rounded-pill w-50 mt-1" %>
+        <%= link_to '編集', edit_document_path(@document),
+            class: "btn btn-outline-success btn-sm rounded-pill w-50 mt-1 mb-3" %>
         <%= link_to '削除', @document, method: :delete, data: { confirm: '本当に削除しますか？' },
-            class: "btn btn-outline-danger btn-sm rounded-pill w-50 mt-1 destroy_document_#{@document.id}" %>
+            class: "btn btn-outline-danger btn-sm rounded-pill w-50 destroy_document_#{@document.id}" %>
       </div>
     </div>
   </div>

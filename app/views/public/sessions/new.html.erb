@@ -2,31 +2,33 @@
   <div class="row">
     <div class="col-6 offset-3 text-center">
       <h2 class="font-weight-bold">ログイン</h2>
-
       <%= form_with model: @end_user, url: end_user_session_path do |f| %>
         <!--メールアドレス-->
         <div class="form-group text-left mt-3 col-8 offset-2">
           <%= f.label :email %><br>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス",
+              class: "form-control form-control-sm" %>
         </div>
         <!--パスワード-->
         <div class="form-group text-left mt-3 col-8 offset-2">
           <%= f.label :password %><br>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-sm" %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "6文字以上の半角英数字",
+              class: "form-control form-control-sm" %>
         </div>
         <!--ボタン-->
         <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-outline-info rounded-pill w-50 mt-1" %>
+          <%= button_tag :type => "submit", :class =>"btn btn-outline-primary rounded-pill w-50 mt-1" do %>
+            <i class="fas fa-sign-in-alt"></i> ログイン
+          <% end %>
         </div>
       <% end %>
-      
+      <!--未登録ユーザーへの案内-->
       <div class="row text-center mt-4">
         <div class="col-12 col-md-10 offset-md-1 py-4">
           <h4 class="font-weight-bold">ユーザー登録がお済みでない方</h4>
           <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
         </div>
       </div>
-
     </div>
   </div>
 </div>

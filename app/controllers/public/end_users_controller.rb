@@ -16,7 +16,7 @@ class Public::EndUsersController < ApplicationController
       flash[:notice] = "編集内容を保存しました"
       redirect_to end_user_path(@end_user)
     else
-      flash[:alert] = "入力に誤りがあります"
+      flash[:alert] = "20文字以上のユーザー名、または入力がされていないようです"
       render :edit
     end
   end
@@ -27,14 +27,14 @@ class Public::EndUsersController < ApplicationController
   def withdrawal
     @end_user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行しました"
+    flash[:notice] = "退会しました"
     redirect_to root_path
   end
 
   def favorites
-    @favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:document_id)
-    @favorite_list = Document.find(@favorites)
-    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page])
+    @favorites = current_end_user.favorites.pluck(:document_id)
+    favorite_list = Document.find(@favorites)
+    @favorite_list = Kaminari.paginate_array(favorite_list).page(params[:page])
   end
 
   private

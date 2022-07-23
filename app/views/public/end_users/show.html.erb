@@ -1,54 +1,61 @@
 <div class="container mt-5">
   <div class="row">
-    <!--left side-->
+    <!--ページの左側-->
     <div class="col-2 text-center">
       <h2 class="font-weight-bold mb-3">マイページ</h2>
       <!--プロフィール画像-->
-      <%= image_tag @end_user.get_profile_image(100,100), class: "rounded-circle" %>
+      <%= image_tag @end_user.get_profile_image(150,150), class: "rounded-circle img" %>
       <!--ユーザー名-->
       <p><%= @end_user.name %></p>
       <!--お気に入り-->
       <div class="mt-2 mb-4">
-        <%=link_to end_user_favorites_path(current_end_user) do %>
+        <%=link_to end_user_favorites_path(current_end_user), class: "btn btn-outline-info btn-sm rounded-pill mb-2 mt-1" do %>
           <i class="fas fa-tag"></i> お気に入りリスト
         <% end %>
       </div>
-      <!--ボタン-->
-      <%= link_to edit_end_user_path(@end_user),
-          class: "btn btn-outline-success btn-sm rounded-pill mb-2 mt-1 edit_user_#{@end_user.id}" do %>
-        <div class="flex-colum mx-3 text_center">
-          <i class="fas fa-edit"></i> 編集
-        </div>
-      <% end %>
-      <%= link_to end_user_confirm_path(@end_user),
-          class: "btn btn-outline-danger btn-sm rounded-pill mt-1 edit_user_#{@end_user.id}" do %>
-        <div class="flex-colum mx-3 text_center">
-          <i class="fas fa-reply-all"></i> 退会
-        </div>
+      <% if @end_user.name != "guestuser" %>
+        <!--編集ボタン-->
+        <%= link_to edit_end_user_path(@end_user),
+            class: "btn btn-outline-success btn-sm rounded-pill mb-2 mt-1 edit_user_#{@end_user.id}" do %>
+          <div class="flex-colum mx-3 text_center">
+            <i class="fas fa-edit"></i> 編集
+          </div>
+        <% end %>
+        <!--退会ボタン-->
+        <%= link_to end_user_confirm_path(@end_user),
+            class: "btn btn-outline-danger btn-sm rounded-pill mt-1 edit_user_#{@end_user.id}" do %>
+          <div class="flex-colum mx-3 text_center">
+            <i class="fas fa-reply-all"></i> 退会
+          </div>
+        <% end %>
       <% end %>
     </div>
-    <!--right side-->
+    <!--ページの右側-->
     <div class="col-10 text-center mb-1">
-      <!--投稿数-->
-      <h3 class="mb-2 mb-5">
+      <!--投稿の統計-->
+      <h3 class="mb-4">
         1ヶ月間の投稿数は
         <%= current_end_user.documents.where('created_at > ?', Date.today.month).count %>件、
         今までの投稿数は
         <%= current_end_user.documents.all.count %>件です
       </h3>
       <!--投稿数のグラフ-->
-      <div class="d-flex justify-content-center">
-        <div style="position:relative;width:500px;height:300px;">
+      <div class="d-flex justify-content-center mb-5">
+        <div class="chart-line">
           <%= render 'public/end_users/line_chart', documents: @documents %>
         </div>
       </div>
-      <!---->
-      <h3 class="mb-2 mb-5">
-        1ヶ月間の感情の統計です
-      </h3>
+      <!--感情数のグラフ-->
+      <h3 class="mb-3">あなたが選択した感情の比率を確認しましょう</h3>
+      <!--感情アイコン一覧-->
+      <a class="mr-2"><i class="fas fa-grin fa-2x" style="color: #f6c90e"></i></a>
+      <a class="mr-2"><i class="fas fa-angry fa-2x" style="color: #f47c7c"></i></a>
+      <a class="mr-2"><i class="fas fa-sad-tear fa-2x" style="color: #70a1d7"></i></a>
+      <a class="mr-2"><i class="fas fa-meh fa-2x" style="color: #a1de93"></i></a>
+      <a class="mr-2"><i class="fas fa-tired fa-2x" style="color: #aa96da"></i></a>
       <!--感情のグラフ-->
-      <div class="d-flex justify-content-center mb-4">
-        <div style="position:relative;width:450px;height:450px;">
+      <div class="d-flex justify-content-center mt-1 mb-4">
+        <div class ="chart-doughnut">
           <%= render 'public/end_users/doughnut_chart', documents: @documents %>
         </div>
       </div>

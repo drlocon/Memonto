@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <div class="row">
+    <!--ページタイトル-->
     <div class="col-6 offset-3 text-center mb-3">
       <h2 class="font-weight-bold"><%= @end_user.name %>さんの情報を編集</h2>
     </div>
@@ -7,7 +8,6 @@
     <div class="col-6 offset-3 text-center mb-3">
       <%= image_tag @end_user.get_profile_image(200,200), class: "rounded-circle" %><br>
     </div>
-    
     <!--編集フォーム-->
     <div class="col-6 offset-3 text-center mb-3">
       <%= form_with model: @end_user, url: admin_end_user_path do |f| %>
@@ -28,10 +28,14 @@
         </div>
         <!--ステータス-->
         <div class="form-group text-center mt-3 col-8 offset-2">
-          <%= f.radio_button :is_deleted, "true", class: "mr-1" %>
-          退会<i class="fas fa-comment-slash"></i>&emsp;
-          <%= f.radio_button :is_deleted, "false", class: "mr-1" %>
-          有効 <i class="fas fa-comment-dots"></i>
+          <!--退会-->
+          <%= f.radio_button :is_deleted, true, class: "mr-1" %>
+          <%= f.label :is_deleted_true, "退会" %>
+          <i class="fas fa-comment-slash"></i>&emsp;
+          <!--有効-->
+          <%= f.radio_button :is_deleted, false, class: "mr-1" %>
+          <%= f.label :is_deleted_false, "有効" %>
+          <i class="fas fa-comment-dots"></i>
         </div>
         <!--更新ボタン-->
         <div class="form-group mt-3 mb-5">
@@ -39,11 +43,13 @@
         </div>
       <% end %>
     </div>
-    
     <!--戻るボタン-->
     <div class="col-6 offset-3 text-center mb-3">
-      <%=link_to "ユーザー詳細画面に戻る", admin_end_user_path(@end_user) %>
+      <%= link_to admin_end_user_path(@end_user) do %>
+        <div class="flex-colum mx-3 text_center">
+          <i class="fas fa-arrow-circle-left"></i> ユーザー詳細画面に戻る
+        </div>
+      <% end %>
     </div>
-    
   </div>
 </div>
