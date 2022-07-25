@@ -24,27 +24,43 @@ users = EndUser.create!(
 
 documents = Document.create!(
   [
-    {content: '町の灯は、暗の中だってこわくない', feeling: 'happy', end_user_id: users[0].id },
-    {content: '水銀は蒸発して風が流れて来るんだ', feeling: 'anger', end_user_id: users[1].id },
-    {content: 'くっきり白い羽根は前へ行きました', feeling: 'normal', end_user_id: users[2].id },
-    {content: '向こうからぱっと白く明るくなった', feeling: 'tired', end_user_id: users[3].id }
+    {content: '町の灯は、暗の中だってこわくない', feeling: 'happy', end_user_id: users[0].id},
+    {content: 'ゆらゆらと青い焔のように見えます', feeling: 'anger', end_user_id: users[0].id},
+    {content: '汽車はぼんやりと白く見えるだけだ', feeling: 'sorrow', end_user_id: users[0].id},
+    {content: '水銀は蒸発して風が流れて来るんだ', feeling: 'normal', end_user_id: users[1].id},
+    {content: '青い胸あてをしたっての知っている', feeling: 'tired', end_user_id: users[1].id},
+    {content: 'その星はみな、涙に吹き込みました', feeling: 'happy', end_user_id: users[1].id},
+    {content: 'くっきり白い羽根は前へ行きました', feeling: 'anger', end_user_id: users[2].id},
+    {content: '指を一本あげてくるくるとまわった', feeling: 'sorrow', end_user_id: users[2].id},
+    {content: 'この頁一つを見てにこにこわらった', feeling: 'normal', end_user_id: users[2].id},
+    {content: '向こうからぱっと白く明るくなった', feeling: 'tired', end_user_id: users[3].id},
+    {content: '地平線の上でけむったように思った', feeling: 'happy', end_user_id: users[3].id},
+    {content: '幸福なそのひとのために祈っている', feeling: 'anger', end_user_id: users[3].id}
   ]
 )
 
 tags = Tag.create!(
   [
-    {name: 'ダミー1'},
-    {name: 'ダミー2'},
-    {name: 'ダミー3'},
-    {name: 'ダミー4'}
+    {name: 'ダミー'},
+    {name: 'Dummy'},
+    {name: 'テスト'},
+    {name: 'TEST'}
   ]
 )
 
 TagDocument.create!(
   [
     {tag_id: tags[0].id, document_id: documents[0].id},
-    {tag_id: tags[1].id, document_id: documents[1].id},
-    {tag_id: tags[2].id, document_id: documents[2].id},
-    {tag_id: tags[3].id, document_id: documents[3].id}
+    {tag_id: tags[0].id, document_id: documents[1].id},
+    {tag_id: tags[1].id, document_id: documents[2].id},
+    {tag_id: tags[1].id, document_id: documents[3].id},
+    {tag_id: tags[1].id, document_id: documents[4].id},
+    {tag_id: tags[2].id, document_id: documents[5].id},
+    {tag_id: tags[2].id, document_id: documents[6].id},
+    {tag_id: tags[2].id, document_id: documents[7].id},
+    {tag_id: tags[3].id, document_id: documents[8].id},
+    {tag_id: tags[3].id, document_id: documents[9].id},
+    {tag_id: tags[3].id, document_id: documents[10].id},
+    {tag_id: tags[0].id, document_id: documents[11].id}
   ]
 )
