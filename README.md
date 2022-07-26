@@ -55,6 +55,11 @@ https://memonto.jp
 - better_errors
 - binding_of_caller
 - Rubocop
+
+### :notebook_with_decorative_cover:その他
+- Affinity Designer (グラフィックデザインソフト)
+- ibisPaint X (ペイントアプリ)
+
 <br>
 
 ## 機能一覧
