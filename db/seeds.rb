@@ -40,14 +40,16 @@ documents = Document.create!(
     {content: '青い胸あてをしたっての知っている', feeling: 'tired',  end_user_id: users[0].id},
     {content: 'その星はみな、涙に吹き込みました', feeling: 'happy',  end_user_id: users[0].id},
     {content: 'くっきり白い羽根は前へ行きました', feeling: 'anger',  end_user_id: users[0].id},
-    {content: '指を一本あげてくるくるとまわった', feeling: 'happy',  end_user_id: users[0].id},
+    {content: 'それでもわたくしはどうしても僕もう少し汽車へ乗ってから行くんだよと腰掛けたばかりの青年にぼくたちここで天上よりももっとすきとおっていたのでしょうかとたずねました',
+                                                  feeling: 'happy',  end_user_id: users[0].id},
     {content: 'この頁一つを見てにこにこわらった', feeling: 'normal', end_user_id: users[1].id},
     {content: '向こうからぱっと白く明るくなった', feeling: 'tired',  end_user_id: users[1].id},
     {content: '地平線の上でけむったように思った', feeling: 'happy',  end_user_id: users[1].id},
     {content: '幸福なそのひとのために祈っている', feeling: 'anger',  end_user_id: users[1].id},
-    {content: '向こうからぱっと白く明るくなった', feeling: 'tired',  end_user_id: users[1].id},
-    {content: '地平線の上でけむったように思った', feeling: 'sorrow', end_user_id: users[1].id},
-    {content: '幸福なそのひとのために祈っている', feeling: 'normal', end_user_id: users[1].id}
+    {content: 'さそりはこう言ってお祈りしたのだ', feeling: 'tired',  end_user_id: users[1].id},
+    {content: '幸福なそのひとのために祈っている', feeling: 'sorrow', end_user_id: users[1].id},
+    {content: 'するとある日いたちに見つかって食べられそうになった水は見えなくなり野原から汽車の音が聞こえて来るのでさよならとまるでたまらないほどただ黒いびろうどへ悲しみました',
+                                                  feeling: 'normal', end_user_id: users[1].id}
   ]
 )
 
