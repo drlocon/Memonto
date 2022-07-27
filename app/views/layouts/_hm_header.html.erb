@@ -93,13 +93,13 @@
 </div>
 
 <script>
-  $(".hm-icon").click(function () {//ボタンがクリックされたら
-    $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
-    $("#hm-menu").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
+  $(".hm-icon").click(function () {
+    $(this).toggleClass('active');
+    $("#hm-menu").toggleClass('panelactive');
   });
 
-  $("#hm-menu a").click(function () {//ナビゲーションのリンクがクリックされたら
-    $(".hm-icon").removeClass('active');//ボタンの activeクラスを除去し
-    $("#hm-menu").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+  $("#hm-menu a").click(function () {
+    $(".hm-icon").removeClass('active');
+    $("#hm-menu").removeClass('panelactive');
   });
 </script>

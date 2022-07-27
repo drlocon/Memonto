@@ -13,7 +13,7 @@ class Admin::EndUsersController < ApplicationController
       flash[:notice] = "ユーザー情報が更新されました"
       redirect_to admin_end_user_path(@end_user)
     else
-      flash[:alert] = "ユーザー情報を更新できませんでした"
+      flash[:alert] = "20文字以内の名前、メールアドレスが正しく入力されているか もう一度ご確認下さい"
       render :edit
     end
   end
