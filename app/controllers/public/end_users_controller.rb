@@ -27,7 +27,7 @@ class Public::EndUsersController < ApplicationController
   def withdrawal
     @end_user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会しました"
+    flash[:notice] = "退会手続きが完了しました 「Memonto」をご利用いただき、ありがとうございました"
     redirect_to root_path
   end
 

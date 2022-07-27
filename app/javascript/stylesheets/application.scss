@@ -150,19 +150,16 @@ footer {
 }
 
 // pagination
-// ページネーション
 .pagination>li>a {
   border: none;
   color: #34495e;
   text-align: center;
 }
 
-// 表示しているページ番号のデザイン
 .pagination>.active>a {
   border-radius: 50%;
 }
 
-// ホバー時のデザイン
 .pagination>li>a:hover {
   background: #eaf7fc;
   border-radius: 50%;
