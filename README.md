@@ -72,7 +72,7 @@ https://memonto.jp
 - タグ機能
 - お気に入り機能(非同期通信)
 - 分析機能(投稿数グラフ・感情数グラフ)
-- 検索機能(キーワード・タグ・お気に入り)
+- 検索機能(キーワード・タグ)
 - ページネーション機能
 
 ### :notebook_with_decorative_cover:管理ユーザ
@@ -87,12 +87,13 @@ https://memonto.jp
 |記録投稿ページ|記録一覧ページ|
 |---|---|
 |<div align="center"><img src="https://user-images.githubusercontent.com/104292397/180166056-a4dd951b-14c6-40c5-9d62-06bc5706b8d0.png" width="300px"></div>|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/180166114-74da7abc-41b4-4fcc-a1d5-fc68be96e3b0.png" width="300px"></div>|
-|記録する感情は5つのアイコンから選択できるように<br>設計しました。|タグをつけることで記録一覧から検索できます。|
+|記録する感情は５つのアイコンから選択できるように<br>設計しました。|タグをつけることで記録一覧から検索できます。|
 
-|マイページ|
-|---|
-|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/180165007-432edb4e-b4d3-4321-9fd2-700994112d15.png" width="300px"></div>|
-|マイページでは一ヶ月間の投稿数と感情数のグラフが<br>表示されます。|
+|マイページ|お気に入り一覧|
+|---|---|
+|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/180165007-432edb4e-b4d3-4321-9fd2-700994112d15.png" width="300px"></div>|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/181254032-6820bdbd-82dd-46ba-b332-eb2ed631cb74.png" width="300px"></div>|
+|マイページでは１ヶ月間の投稿数と感情数のグラフが<br>表示されます。|お気に入り登録することでマイページから簡単に<br>振り返ることができます。|
+
 <br>
 
 ## 設計書

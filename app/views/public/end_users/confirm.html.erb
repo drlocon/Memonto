@@ -4,7 +4,7 @@
       <h2 class="font-weight-bold">退会確認</h2>
       <!--説明文-->
       <p class="mt-4">
-        退会手続きをされますと、今までの記録たマイページなどのサービスが利用できなくなります。<br>
+        退会手続きをされますと、今までの記録やマイページなどのサービスが利用できなくなります。<br>
         再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
         本当に退会してよろしいですか？
       </p>
@@ -13,7 +13,7 @@
         <%= link_to "退会しない", end_user_path(current_end_user),
             class: 'btn btn-outline-info rounded-pill w-50 mt-1' %>
         <%= link_to "退会する", end_user_withdrawal_path, method: :patch, 
-            data: { confilm: "本当に退会しますか？" }, class: 'btn btn-outline-danger rounded-pill w-50 mt-3' %>
+            class: 'btn btn-outline-danger rounded-pill w-50 mt-3' %>
       </div>
     </div>
   </div>
