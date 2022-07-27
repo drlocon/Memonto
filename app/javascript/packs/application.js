@@ -22,7 +22,7 @@ ActiveStorage.start()
 // グラフ
 global.Chart = Chart;
 
-// 感情
+// 感情アイコン
 document.addEventListener("turbolinks:load", function(){
   let radio_btns = document.querySelectorAll(`input[type='radio'][class='hidden_radio']`);
   for (let target of radio_btns) {
