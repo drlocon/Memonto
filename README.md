@@ -1,5 +1,5 @@
 # Memonto
-![demo](https://user-images.githubusercontent.com/104292397/180166394-a4b69b2d-3042-451e-88c0-1748739836a7.gif)
+![demo](https://user-images.githubusercontent.com/104292397/182009425-9a3324a5-47ed-4149-828b-23139caca6ae.gif)
 
 <img src="https://img.shields.io/badge/Ruby-v2.6.3-cc0000"> <img src="https://img.shields.io/badge/Rails-v6.1.6-cc0000">
 
@@ -91,7 +91,7 @@ https://memonto.jp
 
 |マイページ|お気に入り一覧|
 |---|---|
-|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/180165007-432edb4e-b4d3-4321-9fd2-700994112d15.png" width="300px"></div>|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/181254032-6820bdbd-82dd-46ba-b332-eb2ed631cb74.png" width="300px"></div>|
+|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/182009441-509d4d02-4f28-4173-b798-257d1e0cc9b1.png" width="300px"></div>|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/181254032-6820bdbd-82dd-46ba-b332-eb2ed631cb74.png" width="300px"></div>|
 |マイページでは１ヶ月間の投稿数と感情数のグラフが<br>表示されます。|お気に入り登録することでマイページから簡単に<br>振り返ることができます。|
 
 <br>
