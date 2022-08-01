@@ -38,28 +38,27 @@ class Public::EndUsersController < ApplicationController
   end
 
   private
-
-  def end_user_params
-    params.require(:end_user).permit(:name, :profile_image)
-  end
-
-  def set_end_user
-    @end_user = current_end_user
-  end
-
-  def ensure_guest_user
-    @end_user = EndUser.find(params[:id])
-    if @end_user.name == "guestuser"
-      flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
-      redirect_to end_user_path(current_end_user)
+    def end_user_params
+      params.require(:end_user).permit(:name, :profile_image)
     end
-  end
 
-  def check_guest_user
-    @end_user = EndUser.find(params[:end_user_id])
-    if @end_user.name == "guestuser"
-      flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
-      redirect_to end_user_path(current_end_user)
+    def set_end_user
+      @end_user = current_end_user
     end
-  end
+
+    def ensure_guest_user
+      @end_user = EndUser.find(params[:id])
+      if @end_user.name == "guestuser"
+        flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
+        redirect_to end_user_path(current_end_user)
+      end
+    end
+
+    def check_guest_user
+      @end_user = EndUser.find(params[:end_user_id])
+      if @end_user.name == "guestuser"
+        flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
+        redirect_to end_user_path(current_end_user)
+      end
+    end
 end
