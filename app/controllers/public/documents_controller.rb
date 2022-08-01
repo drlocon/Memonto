@@ -10,7 +10,7 @@ class Public::DocumentsController < ApplicationController
   def create
     @document_new = Document.new(document_params)
     @document_new.end_user_id = current_end_user.id
-    tag_list = params[:document][:tag_name].split(',')
+    tag_list = params[:document][:tag_name].split(",")
     if @document_new.save
       @document_new.save_tags(tag_list)
       flash[:notice] = "記録を登録しました"
@@ -30,11 +30,11 @@ class Public::DocumentsController < ApplicationController
   end
 
   def edit
-    @tag_list = @document.tags.pluck(:name).join(',')
+    @tag_list = @document.tags.pluck(:name).join(",")
   end
 
   def update
-    tag_list = params[:document][:tag_name].split(',')
+    tag_list = params[:document][:tag_name].split(",")
     if @document.update(document_params)
       @document.save_tags(tag_list)
       flash[:notice] = "編集内容を保存しました"
@@ -61,22 +61,21 @@ class Public::DocumentsController < ApplicationController
   end
 
   private
-
-  def document_params
-    params.require(:document).permit(:content, :feeling)
-  end
-
-  def set_document
-    @document = current_end_user.documents.find(params[:id])
-  end
-
-  def set_tags
-    arr = []
-    current_end_user.documents.each do |doc|
-      doc.tags.each do |tag|
-        arr.push(tag.id)
-      end
+    def document_params
+      params.require(:document).permit(:content, :feeling)
     end
-    @tags = Tag.where(id: arr).distinct
-  end
+
+    def set_document
+      @document = current_end_user.documents.find(params[:id])
+    end
+
+    def set_tags
+      arr = []
+      current_end_user.documents.each do |doc|
+        doc.tags.each do |tag|
+          arr.push(tag.id)
+        end
+      end
+      @tags = Tag.where(id: arr).distinct
+    end
 end

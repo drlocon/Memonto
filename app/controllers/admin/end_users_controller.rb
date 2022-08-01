@@ -23,12 +23,11 @@ class Admin::EndUsersController < ApplicationController
   end
 
   private
+    def end_user_params
+      params.require(:end_user).permit(:name, :email, :is_deleted)
+    end
 
-  def end_user_params
-    params.require(:end_user).permit(:name, :email, :is_deleted)
-  end
-
-  def set_end_user
-    @end_user = EndUser.find(params[:id])
-  end
+    def set_end_user
+      @end_user = EndUser.find(params[:id])
+    end
 end
