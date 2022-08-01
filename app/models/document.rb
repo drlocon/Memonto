@@ -59,7 +59,7 @@ class Document < ApplicationRecord
   # キーワード検索の設定
   def self.word_search(search)
     if search != ""
-      Document.where('content LIKE(?)', "%#{search}%")
+      Document.where("content LIKE(?)", "%#{search}%")
     else
       Document.all
     end

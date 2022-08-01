@@ -1,7 +1,7 @@
 # Memonto
 ![demo](https://user-images.githubusercontent.com/104292397/182009425-9a3324a5-47ed-4149-828b-23139caca6ae.gif)
 
-<img src="https://img.shields.io/badge/Ruby-v2.6.3-cc0000"> <img src="https://img.shields.io/badge/Rails-v6.1.6-cc0000">
+<img src="https://img.shields.io/badge/Ruby-v3.1.2-cc0000"> <img src="https://img.shields.io/badge/Rails-v6.1.6-cc0000">
 
 ## URL
 https://memonto.jp
