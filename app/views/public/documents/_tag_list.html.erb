@@ -1,0 +1,7 @@
+<% tags.each do |list| %>
+  <%=link_to tag_search_documents_path(tag_id: list.id) do %>
+    <div class="btn btn-outline-secondary btn-sm rounded-pill">
+      <i class="fas fa-tag"></i> <%= list.name %>
+    </div>
+  <% end %>
+<% end %>

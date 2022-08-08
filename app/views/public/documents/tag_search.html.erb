@@ -3,6 +3,10 @@
     <div class="col-6 offset-3 text-center">
       <h2 class="font-weight-bold">タグ検索結果</h2>
     </div>
+    <!--タグリスト-->
+    <div class="col-10 offset-1 text-center mt-3 mb-5">
+      <%= render "public/documents/tag_list", tags: @tags %>
+    </div>
     <!--記録の一覧-->
     <div class="col-10 offset-1 text-left mt-3 mb-5">
       <%= render "public/documents/document_card", documents: @tags_search %>

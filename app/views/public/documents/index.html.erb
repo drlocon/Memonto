@@ -5,13 +5,7 @@
     </div>
     <!--タグリスト-->
     <div class="col-10 offset-1 text-center mt-3 mb-5">
-      <% @tags.each do |list| %>
-        <%=link_to tag_search_documents_path(tag_id: list.id) do %>
-          <div class="btn btn-outline-secondary btn-sm rounded-pill">
-            <i class="fas fa-tag"></i> <%= list.name %>
-          </div>
-        <% end %>
-      <% end %>
+      <%= render "public/documents/tag_list", tags: @tags %>
     </div>
     <!--記録の一覧-->
     <div class="col-10 offset-1 text-left">
