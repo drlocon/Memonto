@@ -1,7 +1,7 @@
 class Public::DocumentsController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  before_action :set_tags, only: [:new, :create, :index, :edit, :update]
+  before_action :set_tags, only: [:new, :create, :index, :edit, :update, :tag_search]
 
   def new
     @document_new = Document.new
