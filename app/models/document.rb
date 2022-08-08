@@ -23,6 +23,8 @@ class Document < ApplicationRecord
   validates :content, presence: true
 
   # 分析機能の設定
+  scope :number_of_posts, -> { where(created_at: Time.zone.now.beginning_of_month..Time.now.end_of_month) }
+  
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
   scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
   scope :created_2day_ago, -> { where(created_at: 2.day.ago.all_day) }

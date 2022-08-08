@@ -34,8 +34,8 @@
     <div class="col-10 text-center mb-1">
       <!--投稿の統計-->
       <h3 class="mb-4">
-        1ヶ月間の投稿数は
-        <%= current_end_user.documents.where('created_at > ?', Date.today.month).count %>件、
+        今月の投稿数は
+        <%= current_end_user.documents.number_of_posts.count %>件、
         今までの投稿数は
         <%= current_end_user.documents.all.count %>件です
       </h3>
