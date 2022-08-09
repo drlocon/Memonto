@@ -99,7 +99,7 @@ https://memonto.jp
 ## 設計書
 
 ### :notebook_with_decorative_cover:インフラ構成図
-<img src="https://user-images.githubusercontent.com/104292397/183355329-c760bc5a-4900-4d6c-9b81-46083a0c4899.jpg" width="700px">
+<img src="https://user-images.githubusercontent.com/104292397/183558900-79a754fa-b5e5-4da4-8572-7017fb71a359.jpg" width="700px">
 
 ### :notebook_with_decorative_cover:ER図
 <img src="https://user-images.githubusercontent.com/104292397/180165984-3d3e2bad-d24d-47ca-a367-72b16173047c.png" width="700px">
