@@ -105,6 +105,6 @@ https://memonto.jp
 <img src="https://user-images.githubusercontent.com/104292397/180165984-3d3e2bad-d24d-47ca-a367-72b16173047c.png" width="700px">
 
 ### :notebook_with_decorative_cover:その他
-UI Flows、テーブル設計書、アプリケーション詳細設計は
+画面遷移図、テーブル設計書、アプリケーション詳細設計は
 [こちら](https://docs.google.com/spreadsheets/d/1QEAMEUGihp_K9UVH0GdrhWeV2JNjYlxIoFk4WKOcPBQ/edit?usp=sharing)
 から閲覧できます。
