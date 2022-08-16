@@ -42,7 +42,7 @@ https://memonto.jp
 - OS：Linux(CentOS)
 - 言語：HTML, CSS, JavaScript, Ruby, SQL
 - フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
+- JSライブラリ：jQuery, Chart.js
 - IDE：Cloud9
 
 ### :notebook_with_decorative_cover:Gem
