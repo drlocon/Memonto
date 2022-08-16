@@ -42,7 +42,7 @@ https://memonto.jp
 - OS：Linux(CentOS)
 - 言語：HTML, CSS, JavaScript, Ruby, SQL
 - フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
+- JSライブラリ：jQuery, Chart.js
 - IDE：Cloud9
 
 ### :notebook_with_decorative_cover:Gem
@@ -82,8 +82,8 @@ https://memonto.jp
 - ページネーション機能
 
 ### :notebook_with_decorative_cover:こだわり
-既存の日記・ライフログアプリを使用した時に色々な機能があると便利な一方、面倒だと感じて使わなくなる経験がありました。<br>
-そこで面倒な手順や機能を除いて簡単に記録・振り返りができるように以下の点を工夫しました。
+既存の日記やライフログアプリを使用した時に色々な機能があると便利な一方、手間がかかると感じて使わなくなる経験がありました。<br>
+そこでシンプルな機能を選択し取り入れることで、簡単に記録と振り返りができるよう以下の点を工夫しました。
 |記録投稿ページ|記録一覧ページ|
 |---|---|
 |<div align="center"><img src="https://user-images.githubusercontent.com/104292397/180166056-a4dd951b-14c6-40c5-9d62-06bc5706b8d0.png" width="300px"></div>|<div align="center"><img src="https://user-images.githubusercontent.com/104292397/180166114-74da7abc-41b4-4fcc-a1d5-fc68be96e3b0.png" width="300px"></div>|
