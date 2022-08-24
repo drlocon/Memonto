@@ -1,6 +1,8 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   before_action :set_end_user
+  before_action :correct_user, only: [:show, :edit, :update]
+  before_action :correct_end_user, only: [:confirm, :withdrawal]
   before_action :ensure_guest_user, only: [:edit, :update]
   before_action :check_guest_user, only: [:confirm, :withdrawal]
 
@@ -45,6 +47,22 @@ class Public::EndUsersController < ApplicationController
     def set_end_user
       @end_user = current_end_user
     end
+    
+    def correct_user
+      @end_user = EndUser.find(params[:id])
+      if current_end_user != @end_user
+        flash[:alert] = "他ユーザーのマイページ機能は使えません"
+        redirect_to end_user_path(current_end_user)
+      end
+    end
+    
+    def correct_end_user
+      @end_user = EndUser.find(params[:end_user_id])
+      if current_end_user != @end_user
+        flash[:alert] = "他ユーザーの退会機能は使えません"
+        redirect_to end_user_path(current_end_user)
+      end
+    end
 
     def ensure_guest_user
       @end_user = EndUser.find(params[:id])
@@ -57,7 +75,7 @@ class Public::EndUsersController < ApplicationController
     def check_guest_user
       @end_user = EndUser.find(params[:end_user_id])
       if @end_user.name == "guestuser"
-        flash[:alert] = "ゲストユーザーはプロフィール編集機能が使えません"
+        flash[:alert] = "ゲストユーザーは退会機能が使えません"
         redirect_to end_user_path(current_end_user)
       end
     end
