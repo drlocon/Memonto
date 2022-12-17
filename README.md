@@ -4,7 +4,8 @@
 <img src="https://img.shields.io/badge/Ruby-v3.1.2-cc0000"> <img src="https://img.shields.io/badge/Rails-v6.1.6-cc0000">
 
 ## URL
-https://memonto.jp
+~~https:// memonto.jp~~
+閉鎖済み。
 
 <br>
 
